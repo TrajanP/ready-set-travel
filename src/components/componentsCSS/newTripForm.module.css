@@ -1,0 +1,115 @@
+/* Used in NewTrip.js, NewTrip1.js */
+
+.title {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 320%;
+}
+
+.description {
+    margin: 20px;
+    font-size: 120%;
+    text-align: center;
+}
+
+.largeInput {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.smallInput {
+    width: 35%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column; 
+
+}
+
+.rowButton {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonNext {
+    align-self: flex-end;
+    color: white;
+    padding: 9px 25px;
+    margin-left: 30px;
+    background-color:#292b2c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.buttonNext:hover {
+    background-color:#758a7f;
+}
+
+.buttonBack {
+    align-self: flex-start;
+    color: white;
+    padding: 9px 25px;
+    margin-left: 30px;
+    background-color:#292b2c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.buttonBack:hover {
+    background-color: #758a7f;
+}
+
+input {
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    margin-left: 0px;
+    box-sizing: border-box;
+    border: 5px solid #292b2c;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+select {
+    border-radius: 5px;
+    border: 5px solid #292b2c;
+    outline: none;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    margin-left: 0px;
+    padding: 10px;
+    margin: 10px;
+}
+
+select:focus {
+    border-color: #758a7f;
+}
+
+input:focus {
+    border-color: #758a7f;
+}
+
+textarea {
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    margin-left: 0px;
+    box-sizing: border-box;
+    border: 5px solid #292b2c;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+textarea:focus {
+    border-color: #758a7f;
+}
