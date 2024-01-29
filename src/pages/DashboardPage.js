@@ -1,4 +1,4 @@
-//Dashboard page allows user to view and delete their trips.
+//Dashboard page allows user to view and delete their Trip Itineraries.
 
 //Component Imports
 import NavbarMain from '../components/NavbarMain';
@@ -157,7 +157,7 @@ export const DashboardPage = () => {
                            <div className={css.searchBar}>
                                <FaSearch size="25px" style={{marginRight: "5px", marginLeft:"5px", marginTop: "15px", marginBottom: "0px"}}/>
                                <form> 
-                                   <input placeholder="Search Trips" type="search" id="searchID"/>
+                                   <input placeholder="Search Trips" type="search" id="searchID" />
                                </form>
                            </div>
                         </div>

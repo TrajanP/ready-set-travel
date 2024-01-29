@@ -1,0 +1,13 @@
+.container {
+    margin-top: 20px;
+    background-color: white;
+    width: 100%;
+    display:flex;
+    justify-content: flex-end;
+}
+
+.rightBody {
+    background-color: rgba(44,51,63,255);
+    width: 80%;
+    height: 100%;
+}
