@@ -1,0 +1,85 @@
+/* Used in EditTrip.js */
+
+.background {
+    height: calc(100vh - 75px);
+    overflow-y: hidden;
+    background-color: rgba(44,51,63,255);
+}
+
+.wrapper  {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.leftDash {
+    width: 50%;
+    background-color: #212529;
+}
+
+.leftDashBody {
+    background-color: #212529;
+    border: solid;
+    height: 95%;
+    /* overflow-y: scroll; */
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.leftDashBody::-webkit-scrollbar {
+    display: none;
+}
+
+.destListContainer {
+    background-color:aliceblue;
+    border-radius: 30px;
+    border-style: solid;
+    width: 70%;
+    overflow: hidden;
+}
+
+.destListPopUp {
+    background-color: rgba(44,51,63,255);
+    position: absolute; 
+    left: 1100px;
+    top: 10%;
+    z-index: 100;
+    width: 40%;
+    height: 500px;
+    border-style: solid;
+    border-radius: 30px;
+}
+
+.rightDash {
+    width: 50%;
+    background-color: #212529;
+}
+
+.rightDashBody {
+    background-color:rgba(44,51,63,255);
+    height: 95%;
+    width: 95%;
+    border-style: solid;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.mapContainer {
+    height: 100%;
+    padding-bottom: 0px;
+}
+
+.mapBar {
+    background-color: rgb(35 55 75 / 90%);
+    color: #fff;
+    padding: 6px 12px;
+    font-family: monospace;
+    z-index: 1;
+    position: absolute;
+    top: 1;
+    right: 0;
+    margin: 12px;
+    border-radius: 4px;
+}

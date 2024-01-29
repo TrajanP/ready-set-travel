@@ -2,6 +2,8 @@ const express = require("express"); //Define our express library
 const cors = require("cors"); //Define out cors library
 const app = express(); //Create variable app which takes library and runs it
 const bodyParser = require('body-parser');
+require('dotenv').config();
+console.log(process.env)
 //const pool = require("./routes/"); //Defines our connection and credentials to run queries
 
 //Middleware, Gaining access to client side data
