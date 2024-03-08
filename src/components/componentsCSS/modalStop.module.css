@@ -1,0 +1,54 @@
+.modalContainer {
+    border-style: solid;
+    border-color: #212529;
+    border-width: 10px;
+    border-radius: 7px;
+    color: white;
+    background-color: #758a7f;
+    z-index: 100;
+}
+
+.modalHeader {
+    background-color: #758a7f;
+    font-size: xx-large;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.modalBody {
+    background-color: #758a7f;
+    height: 250px;
+    display: flex;
+}
+
+.inputGroupRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.inputGroupCol {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column; 
+}
+
+.exitIcon {
+    cursor: pointer;
+}
+
+.exitIcon:hover {
+    color: #212529;
+}
+
+button {
+    align-self: flex-end;
+    color: white;
+    padding: 9px 25px;
+    margin-left: 30px;
+    background-color:#292b2c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}

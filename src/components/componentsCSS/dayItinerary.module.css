@@ -11,3 +11,30 @@
     width: 80%;
     height: 100%;
 }
+
+.noDaysButtonContainer {
+    text-align: center;
+}
+
+.noDaysButtonContainer button {
+    align-self: flex-end;
+    color: white;
+    padding: 9px 25px;
+    margin-left: 30px;
+    background-color:#292b2c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.noDaysButtonContainer button:hover {
+    background-color: #758a7f;
+}
+
+.noDaysContainer {
+    font-size: large;
+    font-weight: bold;
+    padding-left: 100px;
+    padding-right: 100px;
+}

@@ -1,11 +1,11 @@
 .popUpContainer {
     background-color: rgba(44,51,63,255);
     position: absolute; 
-    left: 1100px;
+    left: 90%;
     top: 10%;
-    z-index: 100;
+    z-index: 10;
     width: 40%;
-    height: 800px;
+    height: 80%;
     border-style: solid;
     border-radius: 30px;
 }
@@ -13,13 +13,13 @@
 .popUpHeader {
     color: white;
     text-align: center;
-    height: 100px;
+    height: 15%;
     padding-top: 20px;
 }
 
 .popUpBody {
     background-color: #758a7f;
-    height: 500px;
+    height: 60%;
     overflow-y: scroll;
 }
 
@@ -29,6 +29,8 @@
     justify-content: center;
     flex-direction: column;
     padding: 20px;
+    padding-top: 50px;
+    height: 15%;
 }
 
 .popUpFooter input {

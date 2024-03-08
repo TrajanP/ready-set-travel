@@ -1,78 +1,73 @@
 //This page contains the user interface to interact and build an "Itinerary".
 //This is shown visually with MapBox to display a "Map". 
-//The map is based on itinerary UI which a user can add or remove "Locations". These are draggable using DND-Kit.
-//Each "Location" has a list of "Days", where each day can be filled with activities through an hour by hour itinerary.
+//The map is based on itinerary UI which a user can add or remove "Stops". 
+//Each "Stop" has a list of "Days", where each day can be filled with activities through an hour by hour itinerary.
 //React Imports
 import React, { useRef, useEffect, useState, useMemo } from 'react';
 import css from './pagesCSS/editTrip.module.css';
+import { useParams } from 'react-router';
 //Component Imports
 import NavbarMain from '../components/NavbarMain.js';
-import DestinationCard from '../components/DestinationCard.js';
+import StopCard from '../components/StopCard.js';
 import DayItineraryPopUp from '../components/DayItineraryPopUp.js';
 //DND-Kit Sortable library
 import {DndContext, closestCenter,} from "@dnd-kit/core";
 import {arrayMove, SortableContext, verticalListSortingStrategy} from '@dnd-kit/sortable';
 //Map Box library 
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
-// const key = process.env.REACT_APP_MAPBOX_API_KEY;
+import AddStopModal from '../components/AddStopModal';
+//API Imports
+import StopFinder from '../apis/StopFinder.js';
+import TripFinder from '../apis/TripFinder.js';
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY;
 
 export const EditTripPage = () => {
-
+    const { tripid } = useParams();
     const mapContainer = useRef(null);
     const map = useRef(null);
     const [lng, setLng] = useState(-70.9);
     const [lat, setLat] = useState(42.35);
     const [zoom, setZoom] = useState(9);
-    const [destinations, setDestinations] = useState([
-        {
-            id: "0",
-            trip_name: "Toulouse",
-            letter: "A"
-        },
-        {
-            id: "1",
-            trip_name: "London",
-            letter: "B"
-        },
-        {
-            id: "2",
-            trip_name: "Amsterdam",
-            letter: "C"
-        }
-    ]);
+    const [destinations, setDestinations] = useState([]);
     const destinationIds = useMemo(() => destinations.map((item) => item.trip_name), [destinations]);
-    const [showModal, setShowModal] = useState(false);
-    const handleShowDayItinerary = () => 
-    {
-        setShowModal(!showModal);
+    const [modalAddShow, setAddModalShow] = useState(false);
+    const [listStops, setListStops] = useState([]);
+    const [stopsChanged, setStopsChanged] = useState(false);
+    const [myTrip, setMyTrip] = useState("Test");
+
+    const stopsHandler = () => {
+        setStopsChanged(!stopsChanged);
     }
-        function handleDragEnd(event) {
-        const {active, over} = event;
+    // const handleShowDayItinerary = () => 
+    // {
+    //     setShowModal(!showModal);
+    // }
+    //     function handleDragEnd(event) {
+    //     const {active, over} = event;
 
-        if(active.id !== over.id)
-        {
-            setDestinations((items) => {
-                const activeIndex = items.map(item => item.trip_name).indexOf(active.id);
-                const overIndex = items.map(item => item.trip_name).indexOf(over.id);
-                return arrayMove(items, activeIndex, overIndex);
-            })
-        }
-    };
+    //     if(active.id !== over.id)
+    //     {
+    //         setDestinations((items) => {
+    //             const activeIndex = items.map(item => item.trip_name).indexOf(active.id);
+    //             const overIndex = items.map(item => item.trip_name).indexOf(over.id);
+    //             return arrayMove(items, activeIndex, overIndex);
+    //         })
+    //     }
+    // };
 
-    let menuRef = useRef();
-    // let menuRef2 = useRef();
-    useEffect(() => {
-        let clickHandler = (e) => {
-            console.log("Target is " + e.target)
-            console.log("menuRef is " + menuRef.current)
-            if(!menuRef.current?.contains(e.target) ){//|| !menuRef.current.contains(e.target)){
-                console.log(menuRef.current);
-                setShowModal(false);
-            }
-        };
-        document.addEventListener("mousedown", clickHandler);
-    });
+    // let menuRef = useRef();
+    // // let menuRef2 = useRef();
+    // useEffect(() => {
+    //     let clickHandler = (e) => {
+    //         console.log("Target is " + e.target)
+    //         console.log("menuRef is " + menuRef.current)
+    //         if(!menuRef.current?.contains(e.target) ){//|| !menuRef.current.contains(e.target)){
+    //             console.log(menuRef.current);
+    //             setShowModal(false);
+    //         }
+    //     };
+    //     document.addEventListener("mousedown", clickHandler);
+    // });
 
     //Work in progress code for off click, closes modal
     // let menuRef2 = useRef();
@@ -88,9 +83,33 @@ export const EditTripPage = () => {
     //     });
     // });
 
+    useEffect(() => {
+        const getStops = async () => {
+            try {
+                const response = await StopFinder.get(`/${tripid}`);
+                setListStops(response.data);
+            } catch (err) {
+                console.error(err.message);
+            }
+        
+        };
+        getStops();
+    }, [stopsChanged]);
 
     useEffect(() => {
-        console.log("ENV is " + process.env);
+        const getSingleTrip = async () => {
+            try {
+                const response = await TripFinder.get(`/myTrip/${tripid}`);
+                setMyTrip(response.data[0]);
+            } catch (err) {
+                console.error(err.message);
+            }
+        };
+        getSingleTrip();
+    }, []);
+
+
+    useEffect(() => {
         if (map.current) return; // initialize map only once
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
@@ -108,21 +127,31 @@ export const EditTripPage = () => {
 
     return (
         <div>
+            {listStops ? <div>
             <NavbarMain></NavbarMain>
             <div className={css.background}>
                 <div className={css.wrapper}>
                     <div className={css.leftDash}>
                         <div className={css.leftDashBody}>
-                            <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+                            {/* <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}> */}
                                 <div className={css.destListContainer}>
-                                    <SortableContext items={destinationIds} strategy={verticalListSortingStrategy}>
-                                        {destinations.map((location) => (
-                                            <DestinationCard key={location.id} id={location.trip_name} dest={location} passShowDayItinerary={handleShowDayItinerary} ref={menuRef}/>
+                                    <div className={css.tripHeaderContainer}>
+                                        {myTrip.trip_name}
+                                    </div>
+                                    {/* <SortableContext items={destinationIds} strategy={verticalListSortingStrategy}> */}
+                                    {listStops.length === 0 ? 
+                                    <div className={css.noStopsContainer}> 
+                                        <div> Every trip needs a start! Lets add a Stop to begin. </div>
+                                        <div className={css.noStopsButtonContainer}> <button onClick={() => setAddModalShow(true)}>Add Stop</button> </div>
+                                        {modalAddShow ? <AddStopModal passSetAddModalShow={setAddModalShow}  stopsHandler={stopsHandler}/> : ""}
+                                    </div> : ""}
+                                        {listStops.map((location) => (
+                                            <StopCard key={location.stop_id} id={location.stop_name} dest={location} stopsHandler={stopsHandler}/>
                                         ))}
-                                    </SortableContext>
+                                    {/* </SortableContext> */}
                                 </div>
-                            </DndContext>
-                            {showModal ? <DayItineraryPopUp/> : ""}
+                            {/* </DndContext> */}
+                            {/* {showModal ? <DayItineraryPopUp/> : ""} */}
                         </div>
                     </div>
                     <div className={css.rightDash}>
@@ -135,6 +164,7 @@ export const EditTripPage = () => {
                     </div>
                 </div>
             </div>
+            </div> : ""}
         </div>
     )
 };

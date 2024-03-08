@@ -13,7 +13,7 @@ router.post("/", async(req,res) => {
     } catch (err) {
             console.error(err.message);
         }
-});
+})
 
 //Get all trips
 router.get("/", async(req,res) => {
@@ -23,20 +23,31 @@ router.get("/", async(req,res) => {
     } catch (err) {
             console.error(err.message);
         }
-});
+})
+
 
 //Delete a trip by ID
 router.delete("/:id", async(req,res) => {
     try {
         const id = parseInt(req.params.id);
-        console.log(id);
-        const deletedTrip = await pool.query("DELETE FROM trips WHERE trip_id = $1", [id])
+        const deletedTrip = await pool.query("DELETE FROM trips WHERE trip_id = $1", [id]);
         console.log(`Trip ID: ${id} has been deleted.`);
         res.json(`Trip ID: ${id} has been deleted.`);
     } catch (err) {
         console.error(err.message);
     }
-});
+})
 
+//Get a singular trip
+router.get("/mytrip/:id", async(req,res) => {
+    try {
+        const id = parseInt(req.params.id);
+        const myTrip = await pool.query("SELECT * FROM trips WHERE trip_id = $1", [id]);
+        console.log(`Trip ID: ${id} has been selected`);
+        res.json(myTrip.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
 
 module.exports = router;
