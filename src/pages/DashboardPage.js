@@ -1,4 +1,4 @@
-//Dashboard page allows user to view and delete their Trip Itineraries.
+//Dashboard page allows user to view and delete their trips.
 
 //Component Imports
 import NavbarMain from '../components/NavbarMain';
@@ -114,7 +114,7 @@ export const DashboardPage = () => {
 
     const handleClose = () => {
         setShow(!show);
-    }
+    };
 
     const getTrips = async () => {
         try {
@@ -123,11 +123,11 @@ export const DashboardPage = () => {
         } catch (err) {
             console.error(err.message);
         }
-    }
+    };
 
     const deleteTrip = async (tripID) => {
         try {
-            const response = await TripFinder.delete(`/${tripID}`)
+            const response = await TripFinder.delete(`/${tripID}`);
             setListTrips(listTrips.filter(trip => {
                 return trip.trip_id !== tripID;
             }));
@@ -135,7 +135,7 @@ export const DashboardPage = () => {
         } catch (err) {
             console.error(err.message);
         }
-    }
+    };
 
     useEffect(() => {
         getTrips();
@@ -148,19 +148,19 @@ export const DashboardPage = () => {
                 <div className={css.wrapper}>
                     <div className={css.leftDash}>
                         <div className={css.leftDashBody}> 
-                        <div className={css.filterHeader}>
-                            <div style={{fontSize:"45px"}}>
-                                <h2>My Trips</h2>
+                            <div className={css.filterHeader}>
+                                <div style={{fontSize:"45px"}}>
+                                    <h2>My Trips</h2>
+                                </div>
+                                <Filter filterLabel="Filter By" options={filter_options}></Filter>
+                                <Sort sortLabel="Sort By" options={sort_options} passSortByData={setListTrips} passedData={listTrips}></Sort>
+                                <div className={css.searchBar}>
+                                    <FaSearch size="25px" style={{marginRight: "5px", marginLeft:"5px", marginTop: "15px", marginBottom: "0px"}}/>
+                                    <form> 
+                                        <input placeholder="Search Trips" type="search" id="searchID" />
+                                    </form>
+                                </div>
                             </div>
-                            <Filter filterLabel="Filter By" options={filter_options}></Filter>
-                            <Sort sortLabel="Sort By" options={sort_options} passSortByData={setListTrips} passedData={listTrips}></Sort>
-                           <div className={css.searchBar}>
-                               <FaSearch size="25px" style={{marginRight: "5px", marginLeft:"5px", marginTop: "15px", marginBottom: "0px"}}/>
-                               <form> 
-                                   <input placeholder="Search Trips" type="search" id="searchID" />
-                               </form>
-                           </div>
-                        </div>
                             <div>
                                 {listTrips.map((tile) => ( 
                                         <TripTile key={tile.trip_id} tile={tile} className={css.image} passShowInfo={setShowInfo} passTileID={setTileID} passTile={setCurrObject}/>

@@ -13,7 +13,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 //app.use(express.json); //THIS IS BREAKING CONNECTION TO PORT 5000 This allows out middleware to get access to the Request.Body, which provides JSON data
   
 //Register API Routes
+app.use("/stops", require("./routes/stops"));
 app.use("/trips", require("./routes/trips"));
+app.use("/days", require("./routes/days"));
+
 
 //Start server 
 app.listen(5000, () => { 
