@@ -1,6 +1,6 @@
 //This component renders the modal to Add a "Day" in a user's itinerary. User is asked to fill in basic "Day" info.
 //React Imports
-import React, {useState} from 'react';
+import React, { useState, useContext } from 'react';
 //React-Bootstrap Imports
 import Modal from 'react-bootstrap/Modal';
 //CSS Import
@@ -12,18 +12,22 @@ import StopFinder from '../apis/StopFinder';
 import { useParams } from 'react-router-dom';
 //API Imports 
 import DayFinder from '../apis/DayFinder.js';
+//Middlware Imports
+import { UserContext } from '../context/UserContext';
 
 export const AddDayModal = (props) => {
+
+    //Need to establish initial values in case user doesn't change input placeholder from 1.
+    const [personCount, setPersonCount] = useState(1);
+    const [activitiesCount, setActivitiesCount] = useState(1);
+    const { user, setUser } = useContext(UserContext);
 
     const functionHandler = () => {
         props.passSetAddModalShow(false);
         addDay();
     };
 
-    //Need to establish initial values in case user doesn't change input placeholder from 1.
-    const [personCount, setPersonCount] = useState(1);
-    const [activitiesCount, setActivitiesCount] = useState(1);
-
+    //Add a Day to a user's Stop
     const addDay = async () => {
         try {
             const response = await DayFinder.post("/", {
@@ -32,13 +36,16 @@ export const AddDayModal = (props) => {
                 "day_person_count": personCount,
                 "day_activity_count": activitiesCount,
                 "day_name": document.getElementById("nameID").value
+            }, {
+                headers: {
+                    "Authorization": `Bearer ${user.accessToken}`
+                }
             });
             props.daysHandler();
         } catch (err) {
                 console.log(err.message);
             }
     }
-
 
     return (
         <div className={css.modalContainers}>
@@ -72,7 +79,7 @@ export const AddDayModal = (props) => {
                         </div>
                     </form>
                 </Modal.Body>
-                  <Modal.Footer>
+                  <Modal.Footer className={css.modalFooter}>
                     <button onClick={() => functionHandler()}>
                         Add Day
                     </button>

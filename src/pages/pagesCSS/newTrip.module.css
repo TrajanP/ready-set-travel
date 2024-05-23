@@ -11,7 +11,8 @@
     display: flex;
     border-radius: 20px;
     border-style: solid;
-    border-color: #292b2c;
+    /* border-color: #292b2c; */
+    border-color: black;
     overflow: hidden;
     margin: 200px;
     margin-top: 80px;
@@ -30,7 +31,10 @@
 
 .bodyRight {
     border-left-style: solid;
-    background-color: blanchedalmond;
+    /* background-color: blanchedalmond; */
+    background-color: #212529;
+    color: aliceblue;
+    border-left-color:black;
     width: 50%;
 }
 

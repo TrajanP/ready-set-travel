@@ -1,6 +1,6 @@
 //This component renders the modal to Remove a "Day" in a user's itinerary.
 //React Imports
-import React, {useState} from 'react';
+import React, { useContext } from 'react';
 //CSS Import
 import css from './componentsCSS/modalStop.module.css';
 //React-Icons Import
@@ -10,17 +10,27 @@ import Modal from 'react-bootstrap/Modal';
 import StopFinder from '../apis/StopFinder';
 //API Import
 import DayFinder from '../apis/DayFinder.js';
+//Middleware
+import { UserContext } from '../context/UserContext';
 
 export const RemoveDayModal = (props) => {
 
+    const { user, setUser } = useContext(UserContext);
+
+    //Handles the event of removing a Day and closing the "Remove" menu
     const functionHandler = (dayID) => {
         props.passSetRemoveModalShow(false);
         deleteDay(dayID);
     };
 
+    //Delete a day from a User's Trip's Stop
     const deleteDay = async (dayID) => {
         try {
-            const response = await DayFinder.delete(`delete/${dayID}`);
+            const response = await DayFinder.delete(`delete/${dayID}`, { 
+                headers: { 
+                    Authorization: `Bearer ${user.accessToken}`
+                }
+            });
             console.log(`Day ${dayID} has been deleted.`);
             props.daysHandler();
         } catch (err) {
@@ -41,7 +51,7 @@ export const RemoveDayModal = (props) => {
                         <h2>Are you sure you want to remove {props.day.day_name} from your stop?</h2>
                     </div>     
                 </Modal.Body>
-                  <Modal.Footer>
+                  <Modal.Footer className={css.modalFooter}>
                     <div>
                         <button onClick={() => functionHandler(props.day.day_id)}>Yes</button> <button onClick={() => props.passSetRemoveModalShow(false)}>No</button>
                     </div>

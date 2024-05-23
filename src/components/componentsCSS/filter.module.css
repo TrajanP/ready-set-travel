@@ -35,10 +35,6 @@
     background-color: #758a7f;
 }
 
-input {
-    display: inline;
-}
-
 button[id="filterID"] {
     border-style: none;
     border-radius: 5px;

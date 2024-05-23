@@ -8,63 +8,14 @@ import TileOverview from '../components/TileOverview';
 import Filter from '../components/Filter';
 import Sort from '../components/Sort';
 //Library Imports
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import { FaSearch, FaChevronCircleDown} from 'react-icons/fa';
 //CSS Imports
 import css from './pagesCSS/dashboard.module.css';
 //API Imports
 import TripFinder from '../apis/TripFinder';
-
-    const tile_data = [
-        {
-            "name": "Europe Trip",
-            "start_date" :"5/14/2023",
-            "end_date" :"6/12/2023",
-            "trip_id" : 1,
-            "origin" : "Interlaken, Switzerland",
-            "return" : "Amsterdam, Netherlands",
-        },
-        {
-            "name":"Southern France", 
-            "start_date" :"5/14/2023",
-            "end_date" :"6/12/2023",
-            "trip_id" : 2,
-            "origin" : "London, England",
-            "return" : "Cannes, France",
-        },
-        {
-            "name": "NYC Roadtrip",
-            "start_date" :"5/14/2023",
-            "end_date" :"6/12/2023",
-            "trip_id" : 3,
-            "origin" : "Nashville, TN",
-            "return" : "New York City, NY",
-        },
-        {
-            "name": "Florida Beach Trip",
-            "start_date" :"5/14/2023",
-            "end_date" :"6/12/2023",
-            "trip_id" : 4,
-            "origin" : "Nashville, TN",
-            "return" : "Orlando, FL",
-        },
-        {
-            "name": "Rocky Mountain's Roadtrip",
-            "start_date" :"5/14/2023",
-            "end_date" :"6/12/2023",
-            "trip_id" : 5,
-            "origin" : "Nashville, TN",
-            "return" : "Boulder, Colorado",
-        },
-        {
-            "name": "Sweden & Norway",
-            "start_date" :"5/14/2023",
-            "end_date" :"6/12/2023",
-            "trip_id" : 6,
-            "origin" : "Oslo, Sweden",
-            "return" : "Balto, Norway",
-        }
-    ];
+//Middleware Imports
+import { UserContext } from '../context/UserContext';
 
     const filter_options = [
         {
@@ -111,15 +62,22 @@ export const DashboardPage = () => {
     const [currObject, setCurrObject] = useState({});
     const [show, setShow] = useState(false);
     const [listTrips, setListTrips] = useState([]);
-
+    const { user, setUser } = useContext(UserContext);
+    
     const handleClose = () => {
         setShow(!show);
     };
 
-    const getTrips = async () => {
+    const getUserTrips = async () => {
         try {
-            const response = await TripFinder.get("/");
+            // console.log("Dashboard getting trips")
+            const response = await TripFinder.get(`/mytrips/${user.userID}`, { 
+                headers: { 
+                    Authorization: `Bearer ${user.accessToken}`
+                }
+            });
             setListTrips(response.data);
+            // console.log(response.data);
         } catch (err) {
             console.error(err.message);
         }
@@ -127,10 +85,15 @@ export const DashboardPage = () => {
 
     const deleteTrip = async (tripID) => {
         try {
-            const response = await TripFinder.delete(`/${tripID}`);
+            const response = await TripFinder.delete(`/${tripID}`, {
+                headers: {
+                    Authorization: `Bearer ${user.accessToken}`
+                }
+            });
             setListTrips(listTrips.filter(trip => {
                 return trip.trip_id !== tripID;
             }));
+            setShowInfo(false);
             alert(`Trip ${tripID} has been deleted.`)
         } catch (err) {
             console.error(err.message);
@@ -138,7 +101,7 @@ export const DashboardPage = () => {
     };
 
     useEffect(() => {
-        getTrips();
+        getUserTrips();
     }, []);
 
     return (

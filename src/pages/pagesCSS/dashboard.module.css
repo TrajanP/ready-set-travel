@@ -18,7 +18,7 @@
     width: 50%;
     /* height: 100vh; */
     background-color: #212529;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
 }
 
 .leftDashBody {

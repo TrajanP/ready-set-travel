@@ -2,7 +2,7 @@
 //This component acts as the parent component to many sub child components, which open from this component.
 //React Imports
 import React, {forwardRef, useState, useEffect} from 'react';
-import css from './componentsCSS/destinationCard.module.css';
+import css from './componentsCSS/stopCard.module.css';
 //Component Imports
 import DayItinerary from './DayItinerary.js';
 import AddStopModal from './AddStopModal.js';
@@ -17,7 +17,7 @@ import { HiPlusCircle } from "react-icons/hi";
 import { HiMinusCircle } from "react-icons/hi";
 import { FaChevronCircleDown, FaChevronCircleUp } from 'react-icons/fa';
 
-export const StopCard = forwardRef(({id, dest, passShowDayItinerary, stopsHandler}, ref) => {
+export const StopCard = forwardRef(({ id, dest, passShowDayItinerary, stopsHandler, stopsCount, setNewStop, map={map}, markersList={markersList}, setMarkersList={setMarkersList} }, ref) => {
 
     const {
         attributes,
@@ -40,18 +40,20 @@ export const StopCard = forwardRef(({id, dest, passShowDayItinerary, stopsHandle
     const startDate = (startDateRaw.getMonth()+ 1) + "/" + startDateRaw.getDate() + "/" + startDateRaw.getFullYear();
     const endDateRaw = new Date(dest.stop_last_day);
     const endDate = (endDateRaw.getMonth()+ 1) + "/" + endDateRaw.getDate() + "/" + endDateRaw.getFullYear();
-
     return (
         <div className={css.cardContainer} ref={setNodeRef} style={style} {...attributes} {...listeners} >
             <div className={css.cardBody}>
                 <div className={css.header}>
-                    <div className={css.cardLetter}><h2>{dest.letter}</h2></div>
-                    <h1>{dest.stop_name}</h1>
+                    <div className={css.cardLetter}><h2>{dest.stop_order}</h2></div>
+                    <div>
+                        <h1 className={css.name}> {dest.stop_name} </h1> 
+                    </div>
                     <div style={{position:"absolute", right:"0", paddingRight:"10px"}}>
                         <HiPlusCircle className={css.cardIcon} onMouseDown={() => setAddModalShow(true)}/>
                         <HiMinusCircle className={css.cardIcon} onMouseDown={() => setRemoveModalShow(true)}/>
                     </div>
                 </div>
+                <h3 className={css.location}> {dest.stop_location} </h3> 
                 <div className={css.footer}>
                     <div onMouseDown={() => setDropDown(!dropDown)}> {dropDown ? <FaChevronCircleUp className={css.cardUpDownIcon} /> : <FaChevronCircleDown className={css.cardUpDownIcon}/>} </div>
                     <MdSurfing className={css.cardIcon}/> <h4>{startDate}</h4>
@@ -59,8 +61,8 @@ export const StopCard = forwardRef(({id, dest, passShowDayItinerary, stopsHandle
                 </div>
             </div>
             {dropDown ? <DayItinerary passShowDayItinerary={passShowDayItinerary} stopID={dest.stop_id} ref={ref}/> : ""}
-            {modalAddShow ?<AddStopModal passSetAddModalShow={setAddModalShow} stopsHandler={stopsHandler}/>: ""}
-            {modalRemoveShow ?<RemoveStopModal passSetRemoveModalShow={setRemoveModalShow} stopsHandler={stopsHandler} stop={dest}/>: ""}
+            {modalAddShow ?<AddStopModal passSetAddModalShow={setAddModalShow} stopsHandler={stopsHandler} stopsCount={stopsCount} setNewStop={setNewStop} map={map} markersList={markersList} setMarkersList={setMarkersList}/>: ""}
+            {modalRemoveShow ?<RemoveStopModal passSetRemoveModalShow={setRemoveModalShow} stopsHandler={stopsHandler} stop={dest} map={map} markersList={markersList} setMarkersList={setMarkersList}/>: ""}
         </div>
     )
 });
