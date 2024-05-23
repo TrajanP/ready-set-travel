@@ -7,8 +7,8 @@ const bodyParser = require('body-parser');
 //Create a trip
 router.post("/", async(req,res) => {
     try {
-        const {trip_name, trip_origin, trip_return, trip_description, trip_type, trip_start_date, trip_end_date}  = req.body;
-        const newTrip = await pool.query("INSERT INTO trips (trip_name, trip_origin, trip_return, trip_description, trip_type, trip_start_date, trip_end_date) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *", [trip_name, trip_origin, trip_return, trip_description, trip_type, trip_start_date, trip_end_date]);
+        const {trip_name, trip_user_id, trip_origin, trip_return, trip_description, trip_type, trip_start_date, trip_end_date}  = req.body;
+        const newTrip = await pool.query("INSERT INTO trips (trip_name, trip_user_id, trip_origin, trip_return, trip_description, trip_type, trip_start_date, trip_end_date) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *", [trip_name, trip_user_id, trip_origin, trip_return, trip_description, trip_type, trip_start_date, trip_end_date]);
         res.json(newTrip.rows[0])
     } catch (err) {
             console.error(err.message);
@@ -47,6 +47,18 @@ router.get("/mytrip/:id", async(req,res) => {
         res.json(myTrip.rows);
     } catch (err) {
         console.error(err.message);
+    }
+})
+
+//Get all trips for a specific user
+router.get("/mytrips/:id", async(req,res) => {
+    try {
+        const userID = parseInt(req.params.id);
+        const userTrips = await pool.query("SELECT * from trips WHERE trip_user_id = $1", [userID]);
+        console.log(`User ${userID}'s trips have been retrieved`);
+        res.json(userTrips.rows);
+    } catch (err) {
+        console.error(err.nessage);
     }
 })
 

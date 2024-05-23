@@ -5,12 +5,12 @@ import {React, useState} from 'react';
 //CSS Import
 import css from './componentsCSS/newTripForm.module.css';
 
-export const NewTrip1 = ({module, passNewTrip}) => {
+export const NewTrip1 = ({ module, passNewTrip }) => {
 
     const handleChange = () => {
         let tripName = document.getElementById("nameID").value;
         let tripDescription = document.getElementById("descriptionID").value;
-        passNewTrip({name:tripName, description:tripDescription}); //We use this to carry the 1st page state to the next page, where we submit all the data.
+        passNewTrip({name: tripName, description: tripDescription}); //We use this to carry the 1st page state to the next page, where we submit all the data.
     };
 
     return (

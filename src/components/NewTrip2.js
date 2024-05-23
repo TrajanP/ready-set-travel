@@ -2,34 +2,72 @@
 //As this is the last page, it also sends the form data to the database with a Post. 
 
 //Library Imports
-import {React, useState} from 'react';
+import {React, useContext, useState} from 'react';
 import { useSubmit, useNavigate} from 'react-router-dom';
+//Middleware Imports
+import { UserContext } from '../context/UserContext';
 //API Imports
 import TripFinder from '../apis/TripFinder.js'
 //CSS Import
 import css from './componentsCSS/newTripForm.module.css';
 
-export const NewTrip2 = ({trip}) => {
+export const NewTrip2 = ({ trip }) => {
+    
     const navigate = useNavigate();
+    const { user, setUser } = useContext(UserContext);
+    const [listTrips, setListTrips] = useState([]);
 
+    //Enter User's new Trip in database
     const postTrip = async () => {
         try {
-            console.log(`Name is ${trip.name}`)
             const response = await TripFinder.post("/", {
-            "trip_name": trip.name,
-            "trip_description": trip.description,
-            "trip_origin": document.getElementById("startID").value,
-            "trip_return": document.getElementById("endID").value,
-            "trip_type": document.getElementById("purposeID").value, 
-            "trip_start_date": document.getElementById("startDateID").value,
-            "trip_end_date": document.getElementById("endDateID").value,
-        });
-        // console.log("sent");
-        console.log(response);
+                "trip_name": trip.name,
+                "trip_user_id": user.userID,
+                "trip_description": trip.description,
+                "trip_origin": document.getElementById("startID").value,
+                "trip_return": document.getElementById("endID").value,
+                "trip_type": document.getElementById("purposeID").value, 
+                "trip_start_date": document.getElementById("startDateID").value,
+                "trip_end_date": document.getElementById("endDateID").value,
+            }, {
+                headers: { 
+                    "Authorization": `Bearer ${user.accessToken}`
+                }
+            });
+            // console.log(response);
+            getUserTrips();
         } catch (err) {
             console.error(err.message);
         }
     };
+
+    //Get Trips is called right after our new Trip is created to cause a rerender
+    //Then when user is automatically navigated to the Dashboard, they have an updated list of their trips
+    const getUserTrips = async () => {
+        try {
+            // console.log("new trip getting trips")
+            const response = await TripFinder.get(`/mytrips/${user.userID}`, { 
+                headers: { 
+                    Authorization: `Bearer ${user.accessToken}`
+                }
+            });
+            setListTrips(response.data);
+        } catch (err) {
+            console.error(err.message);
+        }
+    };
+    // const getTrips = async () => {
+    //     try {
+    //         const response = await TripFinder.get("/", { 
+    //             headers: { 
+    //                 Authorization: `Bearer ${user.accessToken}`
+    //             }
+    //         });
+    //         setListTrips(response.data);
+    //     } catch (err) {
+    //         console.error(err.message);
+    //     }
+    // };
 
     const submit = () => {
         postTrip();

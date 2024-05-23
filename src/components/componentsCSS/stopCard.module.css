@@ -36,6 +36,14 @@
     transition: .2s;
 }
 
+.header .name {
+    background-color: #758a7f;
+    padding: 7px;
+    border-style: solid;
+    border-radius: 10px;
+    max-width: 100%;
+
+}
 .cardUpDownIcon {
     scale: 2;
     cursor: pointer;
@@ -45,6 +53,11 @@
 .cardUpDownIcon:hover {
     color: #758a7f;
     transition: .2s;
+}
+
+.location {
+    padding: 5px;
+    padding-left: 90px;
 }
 
 .cardContainer .footer {

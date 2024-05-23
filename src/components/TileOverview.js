@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 //CSS Imports
 import css from './componentsCSS/tileOverview.module.css';
 
-export const TileOverview = ({value,passDeleteHandler}) => {
+export const TileOverview = ({ value, passDeleteHandler }) => {
 
     const navigate = useNavigate();
 

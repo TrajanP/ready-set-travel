@@ -5,7 +5,7 @@ import React , {useState} from 'react';
 import { FaChevronCircleDown, FaChevronCircleUp } from 'react-icons/fa';
 import css from './componentsCSS/filter.module.css';
 
-export const Sort = ({sortLabel, options, passSortByData, passedData}) => {
+export const Sort = ({ sortLabel, options, passSortByData, passedData }) => {
 
     const [showSort, setShowSort] = useState(false);
 

@@ -10,13 +10,13 @@ import RemoveDayModal from './RemoveDayModal.js';
 import { MdLocalHotel, MdOutlineAttractions } from "react-icons/md";
 import { HiPlusCircle, HiMinusCircle } from "react-icons/hi";
 
-export const DayCard = forwardRef(({day, passShowDayItinerary, daysHandler, stopID}, ref) => {
+export const DayCard = forwardRef(({ day, passShowDayItinerary, daysHandler, stopID }, ref) => {
 
     const [modalAddShow, setAddModalShow] = useState(false);
     const [modalRemoveShow, setRemoveModalShow] = useState(false);
 
     return (
-        <div className={css.container} onMouseDown={() => passShowDayItinerary()} ref={ref}>
+        <div className={css.container} onMouseDown={() => passShowDayItinerary} ref={ref}>
             <div>
                 <div className={css.dayLabelBorder}><h5>Day {day.day_order} </h5></div>
                 <div style={{display:"flex", textAlign: "start"}}><h4>{day.day_name} </h4></div>
