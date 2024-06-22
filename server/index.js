@@ -32,6 +32,7 @@ app.use(verifyJWT);
 app.use("/stops", require("./routes/stops"));
 app.use("/trips", require("./routes/trips"));
 app.use("/days", require("./routes/days"));
+app.use("/users", require("./routes/users"));
 
 
 //Start server 

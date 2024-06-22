@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 
 //SIGNUP - Create a new User
 router.post("/", async(req,res) => {
-    const { username, firstName, lastName, password } = req.body;
+    const { username, firstName, lastName, password, user_member_since } = req.body;
 
     //If Username or Password is empty
     if (!username || !password) 
@@ -19,13 +19,13 @@ router.post("/", async(req,res) => {
     const existingUser = await pool.query("SELECT * from users WHERE user_username = $1", [username]);
 
     if (existingUser.rows.length !== 0)
-        return es.status(401).json({ success: false, msg: "Username already exists."});
+        return res.status(401).json({ success: false, msg: "Username already exists."});
 
     try {
         //Encrypt the password
         const hashedPassword = await bcrypt.hash(password, 10);
         //Store the new user
-        const newUser = await pool.query("INSERT into users (user_username, user_first_name, user_last_name, user_password) VALUES($1, $2, $3, $4) RETURNING *", [username, firstName, lastName, hashedPassword]);
+        const newUser = await pool.query("INSERT into users (user_username, user_first_name, user_last_name, user_password, user_member_since) VALUES($1, $2, $3, $4, $5) RETURNING *", [username, firstName, lastName, hashedPassword, user_member_since]);
         return res.json(newUser.rows[0]);
     } catch (err) {
         return res.status(500).json({ 'message': err.message }); 

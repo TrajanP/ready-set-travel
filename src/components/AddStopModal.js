@@ -1,4 +1,4 @@
-//This component renders the modal to Add a "Stop" in a user's itinerary. User is asked to fill in basic "Stop" info.
+//This component renders the modal to Add a "Stop" in a user's itinerary locally. User is asked to fill in basic "Stop" info.
 //React Imports
 import React, { useState, useContext, useEffect } from 'react';
 //React-Bootstrap Imports
@@ -11,16 +11,10 @@ import css from '../components/componentsCSS/modalStop.module.css';
 import { ImCross } from "react-icons/im";
 //React-Router Imports
 import { useParams } from 'react-router-dom';
-//API Imports
-import StopFinder from '../apis/StopFinder.js';
-//Middleware Imports
-import { UserContext } from '../context/UserContext';
 
 export const AddStopModal = (props) => {
      
     const { tripid } = useParams();
-    const [fullscreen, setFullscreen] = useState(true);
-    const { user, setUser } = useContext(UserContext);
     const [locationValue, setLocationValue] = useState("");
     const [name, setName] = useState("");
     const [startDate, setStartDate] = useState("");
@@ -28,54 +22,39 @@ export const AddStopModal = (props) => {
 
     const functionHandler = () => {
         props.passSetAddModalShow(false);
-        GetLatlong()
+        GetLatlong();
     };
 
+    //We pass the new Stop back to the Parent component in EditTripPage
     const postStop = async (long, lat, address) => {
-        try {
-            const response = await StopFinder.post("/", { 
-                "trip_id": tripid,
-                "stop_name": name,
-                "stop_location": address,
-                "stop_order": (props.stopsCount+1),
-                "stop_first_day": startDate,
-                "stop_last_day": endDate,
-                "stop_long": long,
-                "stop_lat": lat
-            }, {
-                headers: { 
-                    "Authorization": `Bearer ${user.accessToken}`
-                }
-            });
-
             props.stopsHandler({
                 trip_id: tripid,
                 stop_name: name,
                 stop_location: address,
-                stop_order: (props.stipsCount+1),
+                stop_order: (props.stopIndex+1),
                 stop_first_day: startDate,
                 stop_last_day: endDate,
                 stop_long: long,
-                stop_lat: lat
-            });
-        } catch (err) {
-            console.log(err.message);
-        }
+                stop_lat: lat,
+                stop_is_new: true
+            }, props.stopIndex+1, "Add");
     };
 
-    const GetLatlong =() => {
-            var geocoder = new window.google.maps.Geocoder();
+    //Get coordinates for the user's chosen location using Google Places API
+    const GetLatlong = () => {
+            // var geocoder = new window.google.maps.Geocoder();
             var address = document.getElementById("locationID").value
-            geocoder.geocode({
-            'address': address
-            }, function(results, status) {
+            // geocoder.geocode({
+            // 'address': address
+            // }, function(results, status) {
         
-            if (status == window.google.maps.GeocoderStatus.OK) {
-                var latitude = results[0].geometry.location.lat();
-                var longitude = results[0].geometry.location.lng();
-                postStop(longitude, latitude, address);
-            }
-            });
+            // if (status == window.google.maps.GeocoderStatus.OK) {
+            //     var latitude = results[0].geometry.location.lat();
+            //     var longitude = results[0].geometry.location.lng();
+            //     // postStop(longitude, latitude, address);
+            // }
+            // });
+            postStop(0, 0, address);
       };
 
     return(
@@ -115,6 +94,7 @@ export const AddStopModal = (props) => {
                     <button onClick={() => functionHandler()}>
                         Add Stop
                     </button>
+                    {props.stopOrder}
                 </Modal.Footer>
             </div>
             </Modal>

@@ -49,6 +49,15 @@
     background-color: #758a7f;
 }
 
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.link:hover {
+    color: black;
+}
+
 input {
     display: inline;
 }

@@ -17,6 +17,7 @@ export const TripTile = (props) => {
 
     const startDate = new Date(props.tile.trip_start_date).toDateString().toLocaleString();
     const endDate = new Date(props.tile.trip_end_date).toDateString().toLocaleString();
+    const createdDate = new Date(props.tile.trip_created_date).toDateString().toLocaleString();
     
     return (
         <div className={css.tileContainer} onClick={() => functionHandler(true)}>
@@ -34,7 +35,7 @@ export const TripTile = (props) => {
                     {endDate}
                 </div>
                 <div>
-                    Created 11/05/22
+                    Created {createdDate}
                 </div>
             </div>
         </div>

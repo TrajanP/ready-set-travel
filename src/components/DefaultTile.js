@@ -7,6 +7,7 @@ import css from './componentsCSS/tripTile.module.css';
 export const DefaultTile = (props) => {
     return (
         <div className={css.tileContainer}>
+                {/* <spline-viewer url="https://prod.spline.design/GTFxI7JaIAusIY7P/scene.splinecode"></spline-viewer> */}
             Create a trip to begin exploring.
         </div>
     );

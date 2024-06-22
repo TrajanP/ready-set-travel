@@ -29,7 +29,7 @@ router.get("/", async(req,res) => {
 //Add a Stop for a certain Trip
 router.post("/", async(req,res) => {
     try {
-        const {trip_id, stop_name, stop_location, stop_order, stop_first_day, stop_last_day, stop_long, stop_lat} = req.body;
+        const { trip_id, stop_name, stop_location, stop_order, stop_first_day, stop_last_day, stop_long, stop_lat } = req.body;
         const newStop = await pool.query("INSERT into stops (trip_id, stop_name, stop_location, stop_order, stop_first_day, stop_last_day, stop_long, stop_lat) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *", [trip_id, stop_name, stop_location, stop_order, stop_first_day, stop_last_day, stop_long, stop_lat]);
         res.json(newStop.rows[0]);
     } catch (err) {
@@ -45,8 +45,19 @@ router.delete("/delete/:id", async(req,res) => {
         console.log(`Stop ID: ${id} has been deleted.`);
         res.json(`Trip ID: ${id} has been deleted`);
     }   catch (err) {
-        console.error(err.message);
+            console.error(err.message);
     }
 });
+
+//Update a Stops's Order in an itinerary after user changes
+router.patch("/update/order", async(req,res) => {
+    try {
+        const { stop_id, stop_order } = req.body;
+        const updatedStop = await pool.query("UPDATE stops SET stop_order = $1 WHERE stop_id = $2 RETURNING *", [stop_order, stop_id]);
+        res.json(updatedStop.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
 
 module.exports = router;

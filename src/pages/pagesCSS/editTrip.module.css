@@ -19,7 +19,8 @@
 .leftDashBody {
     background-color: #212529;
     border: solid;
-    height: 95%;
+    /* height: 95%; */
+    height: 80%;
     display: flex;
     justify-content: center;
     position: relative;
@@ -36,6 +37,8 @@
     border-color: white;
     border-style: solid;
     overflow: scroll;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .leftDashBodyContainer::-webkit-scrollbar {
@@ -52,6 +55,65 @@
     position: sticky;
     top: 0;
     z-index: 10;
+}
+
+.isSavedContainer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    /* margin-right: 10px; */
+    background-color: #212529;
+    border-style: solid;
+    border-radius: 7px;
+    border-color: black;
+    width: 130px;
+    height: 55px;
+    margin: 10px;
+    /* margin-bottom: 40px; */
+}
+
+.tripFooterContainer {
+    background-color: #758a7f;
+    width: 80%;
+    /* text-align: center; */
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+    font-size: xx-large;
+    font-weight: bold;
+    /* position: absolute; */
+    height: 15%;
+    background-color: rgba(44,51,63,255);
+    /* justify-content: center; */
+    /* position: relative; */
+    border-radius: 30px;
+    border-color: white;
+    border-style: solid;
+    margin: auto;
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
+    /* display: flex; */
+    /* margin-top: 0; */
+}
+
+.tripFooterButton {
+    /* margin: 10%; */
+    color: white;
+    padding: 9px 25px;
+    background-color:#292b2c;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    border-style: solid;
+    border-radius: 7px;
+    border-color: black;
+    max-width: 200px;
+    max-height: 80px;
+    margin-top: 45px;
+}
+
+.tripFooterButton:hover {
+    background-color: #758a7f;
+    border-style: solid;
 }
 
 .destListContainer {
@@ -101,17 +163,21 @@
 
 .mapButton {
     z-index: 1;
-    position: absolute;
     margin: 12px;
-    border-radius: 10px;
+    position: absolute;
+    color: white;
+    padding: 9px 25px;
+    background-color:#292b2c;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
     border-style: solid;
-    border-color: #212529;
+    border-radius: 7px;
+    border-color: black;
 }
 
 .mapButton:hover {
     background-color: #758a7f;
     border-style: solid;
-    border-color: white;
 }
 
 .mapBar {

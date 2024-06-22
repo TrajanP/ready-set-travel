@@ -20,6 +20,7 @@ CREATE TABLE "users" (
   "user_last_name" VARCHAR(255) NOT NULL,
   "user_password" VARCHAR(255) NOT NULL,
   "user_refresh_token" VARCHAR(255),
+  "user_member_since" DATE NOT NULL,
   PRIMARY KEY ("user_id")
 );
 
@@ -27,10 +28,11 @@ CREATE TABLE "trips" (
   "trip_id" SERIAL,
   "user_id" VARCHAR(255) NOT NULL,
   "trip_name" VARCHAR(255) NOT NULL,
-  "trip_origin" VARCHAR(255) NOT NULL,
   "trip_description" VARCHAR(255),
   "trip_start_date" DATE NOT NULL,
+  "trip_end_date" DATE NOT NULL,
   "trip_type" VARCHAR(255) NOT NULL,
+  "trip_created_date" DATE NOT NULL,
   PRIMARY KEY ("trip_id"),
   CONSTRAINT "FK_trips.user_id"
     FOREIGN KEY ("user_id")

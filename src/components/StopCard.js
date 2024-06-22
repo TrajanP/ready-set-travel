@@ -7,7 +7,7 @@ import css from './componentsCSS/stopCard.module.css';
 import DayItinerary from './DayItinerary.js';
 import AddStopModal from './AddStopModal.js';
 import RemoveStopModal from './RemoveStopModal.js';
-//DND-Kit Sortable library
+//DND-Kit Sortable library - (Not currently implemented)
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from '@dnd-kit/utilities';
 //React-Icons Library Imports
@@ -16,35 +16,41 @@ import { BsPersonWalking } from "react-icons/bs";
 import { HiPlusCircle } from "react-icons/hi";
 import { HiMinusCircle } from "react-icons/hi";
 import { FaChevronCircleDown, FaChevronCircleUp } from 'react-icons/fa';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
-export const StopCard = forwardRef(({ id, dest, passShowDayItinerary, stopsHandler, stopsCount, setNewStop, map={map}, markersList={markersList}, setMarkersList={setMarkersList} }, ref) => {
+export const StopCard = forwardRef(({ id, dest, passShowDayItinerary, stopsHandler, stopsCount, setNewStop, map={map}, markersList={markersList}, setMarkersList={setMarkersList}, stopIndex={stopIndex} }, ref) => {
 
-    const {
-        attributes,
-        listeners,
-        setNodeRef,
-        transform,
-        transition,
-    } = useSortable({id:id});
+    //-----------Click and Drag Functionality code - (Not Currently Implemented)----------------------//
+    // const {
+    //     attributes,
+    //     listeners,
+    //     setNodeRef,
+    //     transform,
+    //     transition,
+    // } = useSortable({id:id});
 
-    const style = {
-        transform: CSS.Transform.toString(transform),
-        transition
-    };
+    // const style = {
+    //     transform: CSS.Transform.toString(transform),
+    //     transition
+    // };
 
+    //Component State
     const [modalAddShow, setAddModalShow] = useState(false);
     const [modalRemoveShow, setRemoveModalShow] = useState(false);
     const [dropDown, setDropDown] = useState(false);
 
+    //Date Conversions
     const startDateRaw = new Date(dest.stop_first_day);
     const startDate = (startDateRaw.getMonth()+ 1) + "/" + startDateRaw.getDate() + "/" + startDateRaw.getFullYear();
     const endDateRaw = new Date(dest.stop_last_day);
     const endDate = (endDateRaw.getMonth()+ 1) + "/" + endDateRaw.getDate() + "/" + endDateRaw.getFullYear();
+
     return (
-        <div className={css.cardContainer} ref={setNodeRef} style={style} {...attributes} {...listeners} >
+        // <div className={css.cardContainer} ref={setNodeRef} style={style} {...attributes} {...listeners} >
+        <div className={css.cardContainer}>
             <div className={css.cardBody}>
                 <div className={css.header}>
-                    <div className={css.cardLetter}><h2>{dest.stop_order}</h2></div>
+                    <div className={css.cardLetter}><h2>{stopIndex + 1}</h2></div>
                     <div>
                         <h1 className={css.name}> {dest.stop_name} </h1> 
                     </div>
@@ -61,8 +67,8 @@ export const StopCard = forwardRef(({ id, dest, passShowDayItinerary, stopsHandl
                 </div>
             </div>
             {dropDown ? <DayItinerary passShowDayItinerary={passShowDayItinerary} stopID={dest.stop_id} ref={ref}/> : ""}
-            {modalAddShow ?<AddStopModal passSetAddModalShow={setAddModalShow} stopsHandler={stopsHandler} stopsCount={stopsCount} setNewStop={setNewStop} map={map} markersList={markersList} setMarkersList={setMarkersList}/>: ""}
-            {modalRemoveShow ?<RemoveStopModal passSetRemoveModalShow={setRemoveModalShow} stopsHandler={stopsHandler} stop={dest} map={map} markersList={markersList} setMarkersList={setMarkersList}/>: ""}
+            {modalAddShow ?<AddStopModal passSetAddModalShow={setAddModalShow} stopsHandler={stopsHandler} stopsCount={stopsCount} setNewStop={setNewStop} map={map} markersList={markersList} setMarkersList={setMarkersList} stop={dest} stopIndex={stopIndex}/>: ""}
+            {modalRemoveShow ?<RemoveStopModal passSetRemoveModalShow={setRemoveModalShow} stopsHandler={stopsHandler} stop={dest} map={map} markersList={markersList} setMarkersList={setMarkersList} stopIndex={stopIndex}/>: ""}
         </div>
     )
 });

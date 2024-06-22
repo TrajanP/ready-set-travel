@@ -7,8 +7,8 @@ const bodyParser = require('body-parser');
 //Create a trip
 router.post("/", async(req,res) => {
     try {
-        const {trip_name, trip_user_id, trip_origin, trip_return, trip_description, trip_type, trip_start_date, trip_end_date}  = req.body;
-        const newTrip = await pool.query("INSERT INTO trips (trip_name, trip_user_id, trip_origin, trip_return, trip_description, trip_type, trip_start_date, trip_end_date) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *", [trip_name, trip_user_id, trip_origin, trip_return, trip_description, trip_type, trip_start_date, trip_end_date]);
+        const {trip_name, trip_user_id, trip_description, trip_type, trip_start_date, trip_end_date, trip_created_date}  = req.body;
+        const newTrip = await pool.query("INSERT INTO trips (trip_name, trip_user_id, trip_description, trip_type, trip_start_date, trip_end_date, trip_created_date) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *", [trip_name, trip_user_id, trip_description, trip_type, trip_start_date, trip_end_date, trip_created_date]);
         res.json(newTrip.rows[0])
     } catch (err) {
             console.error(err.message);

@@ -32,12 +32,14 @@ export const SignUpModal = (props) => {
 
     //Create new User in database if their input is valid input
     const postUser = async () => {
+        const memberDate = new Date();
         try {
             const response = await AuthorizationFinder.post("/", {
                 "username": email,
                 "firstName": firstName,
                 "lastName": lastName,
                 "password": password,
+                "user_member_since": memberDate
             });
             loginUser();
             // props.passSetDropDown(false);
@@ -47,6 +49,7 @@ export const SignUpModal = (props) => {
         }
     };
 
+    //Login User once they successfully signup
     const loginUser = async () => {
         try {
             const response = await AuthorizationFinder.post('/login/', {

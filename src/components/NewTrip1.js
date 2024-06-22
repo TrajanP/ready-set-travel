@@ -1,12 +1,13 @@
 //Component is used to display the first New Trip form's page.
 
 //Library Imports
-import {React, useState} from 'react';
+import {React} from 'react';
 //CSS Import
 import css from './componentsCSS/newTripForm.module.css';
 
 export const NewTrip1 = ({ module, passNewTrip }) => {
 
+    //Passed state to next user "New Trip" page
     const handleChange = () => {
         let tripName = document.getElementById("nameID").value;
         let tripDescription = document.getElementById("descriptionID").value;
@@ -15,7 +16,6 @@ export const NewTrip1 = ({ module, passNewTrip }) => {
 
     return (
         <div>
-
             <div className={css.title}>
                 Describe Your Trip!
             </div>

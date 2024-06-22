@@ -1,4 +1,4 @@
-//The logout Modal is used to allow user to login to their account and sets the Global User Context
+//The login Modal is used to allow user to login to their account and sets the Global User Context
 //React Imports
 import React, {useState, useRef, useEffect, useContext} from 'react';
 //React-Bootstrap Imports
@@ -16,6 +16,14 @@ import AuthorizationFinder from '../apis/AuthorizationFinder';
 
 export const LoginModal = (props) => {
 
+    //Component State
+    const { user, setUser } = useContext(UserContext);
+    const userRef = useRef();
+    const errorRef = useRef();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+
     const submitHandler = async (e) => {
         e.preventDefault();
         functionHandler();
@@ -26,13 +34,14 @@ export const LoginModal = (props) => {
         props.passSetModalLoginShow(false);
     };
 
+    //Sign User in with inputted credentials
     const functionHandler = async () => {
         try {
             const response = await AuthorizationFinder.post('/login/', {
                 "username": username,
                 "password": password,
             });
-            console.log(JSON.stringify(response.data));
+            // console.log(JSON.stringify(response.data));
             const accessToken = response?.data?.accessToken;
             //Set global User Context with account profile
             setUser({
@@ -59,13 +68,7 @@ export const LoginModal = (props) => {
         }
     };
 
-    const { user, setUser } = useContext(UserContext);
-    const userRef = useRef();
-    const errorRef = useRef();
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [errMsg, setErrMsg] = useState('');
-
+    //Set inital focus for input
     useEffect(() => {
         userRef.current.focus();
     }, []);

@@ -3,6 +3,8 @@
 import React, { useState, useContext } from 'react';
 //CSS Import
 import css from '../components/componentsCSS/accountButton.module.css';
+//React Router Imports
+import { Link } from 'react-router-dom';
 //React Icons Imports
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdAccountCircle, MdNoAccounts, MdOutlineAssignmentInd } from "react-icons/md";
@@ -44,8 +46,8 @@ export const AccountButton = () => {
             {user.isAuth ? 
                 <li className={`${css.options} ${showDropDown ? css.show: ""}`}>
                     <label>
-                        <ul className={css.option} onClick={() => setModalLoginShow(true)}>
-                            <div> <MdOutlineAssignmentInd/> My Account </div>
+                        <ul className={css.option}>
+                            <div> <MdOutlineAssignmentInd/> <Link to="/pages/AccountPage" className={css.link}> My Account </Link>  </div>
                         </ul>
                     </label>
                     <label>

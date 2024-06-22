@@ -19,22 +19,21 @@ export const NewTrip2 = ({ trip }) => {
 
     //Enter User's new Trip in database
     const postTrip = async () => {
+        const dateCreated = new Date();
         try {
             const response = await TripFinder.post("/", {
                 "trip_name": trip.name,
                 "trip_user_id": user.userID,
                 "trip_description": trip.description,
-                "trip_origin": document.getElementById("startID").value,
-                "trip_return": document.getElementById("endID").value,
                 "trip_type": document.getElementById("purposeID").value, 
                 "trip_start_date": document.getElementById("startDateID").value,
                 "trip_end_date": document.getElementById("endDateID").value,
+                "trip_created_date": dateCreated
             }, {
                 headers: { 
                     "Authorization": `Bearer ${user.accessToken}`
                 }
             });
-            // console.log(response);
             getUserTrips();
         } catch (err) {
             console.error(err.message);
@@ -56,18 +55,6 @@ export const NewTrip2 = ({ trip }) => {
             console.error(err.message);
         }
     };
-    // const getTrips = async () => {
-    //     try {
-    //         const response = await TripFinder.get("/", { 
-    //             headers: { 
-    //                 Authorization: `Bearer ${user.accessToken}`
-    //             }
-    //         });
-    //         setListTrips(response.data);
-    //     } catch (err) {
-    //         console.error(err.message);
-    //     }
-    // };
 
     const submit = () => {
         postTrip();
@@ -85,7 +72,7 @@ export const NewTrip2 = ({ trip }) => {
                 </div>
                 <div>
                     <form>
-                        <div style={{display:"flex",justifyContent:"flex-between"}}>
+                        {/* <div style={{display:"flex",justifyContent:"flex-between"}}>
                             <div className={css.smallInput}>   
                                 <label> Start Location </label> 
                                 <input id="startID" type="text" name="Start" title="Where does our trip begin?" placeholder="London"/>
@@ -94,7 +81,7 @@ export const NewTrip2 = ({ trip }) => {
                                 <label> End Location </label>
                                 <input id="endID" type="text" name="End" title="Where does out trip end?" placeholder="Vienna"/>
                             </div>
-                        </div>
+                        </div> */}
 
                         <div style={{display:"flex", justifyContent:"flex-between"}}>
                             <div className={css.smallInput}>
