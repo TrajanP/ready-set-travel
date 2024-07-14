@@ -21,19 +21,19 @@
 > A
 >
 
-Mapbox GL
+### Mapbox GL
 > A
 >
 
-Framer Motion 
+### Framer Motion 
 > A
 >
 
-Bcrypt 
+### Bcrypt 
 > A
 >
 
-React Router Dom 
+### React Router Dom 
 > A
 >
 
