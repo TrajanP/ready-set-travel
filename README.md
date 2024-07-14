@@ -23,11 +23,11 @@
 
 ### Mapbox GL JS
 > Client-side JavaScript library for building web maps and web applications with Mapbox's modern mapping technology.
-> This library allows users to view and interact with a dymaic map display of their created trip. 
+> This library allows users to view and interact with a dynamic map display of their created trip. 
 
 ### Framer Motion 
-> A
->
+> A powerful animation and motion library for React. 
+> This library provides the framework for the Front End Parallax effect found on the app homepage. 
 
 ### Bcrypt 
 > A
