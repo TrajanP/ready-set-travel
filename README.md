@@ -30,6 +30,4 @@
 > This library provides the framework for the Front End Parallax effect found on the app homepage. 
 
 ### React Router Dom 
-> A
->
-
+> A routing library allowing dynamic site navigation for a React app.
