@@ -21,9 +21,9 @@
 > A
 >
 
-### Mapbox GL
-> A
->
+### Mapbox GL JS
+> Client-side JavaScript library for building web maps and web applications with Mapbox's modern mapping technology. This library allows users to view and interact with a dymaic map display of their created trip. 
+
 
 ### Framer Motion 
 > A
