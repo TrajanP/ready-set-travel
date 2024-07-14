@@ -29,10 +29,6 @@
 > A powerful animation and motion library for React. 
 > This library provides the framework for the Front End Parallax effect found on the app homepage. 
 
-### Bcrypt 
-> A
->
-
 ### React Router Dom 
 > A
 >
