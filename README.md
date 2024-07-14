@@ -6,28 +6,24 @@
 ## The Stack
 - - -
 ### Postgres
-> Using Object Storage to store media and source files. Established with bucket policy for Cloud Front read access only.
->
+> PostgreSQL is an object-relational database management system used to store user data.
 
-### Express
->  A
->
+### Express -v 4.18.2
+>  Express is a powerful and flexible server framework for building web applications with Node.js. 
 
-### React
-> A
->
+### React -v 18.2.0
+> React is a Front End library which allows the developer to code and reuse components to build our UI. It efficiently renders using the Virtual DOM and compares state changes with the DOM. The library provides developer benefits such as State Management, Component Lifecycle Methods and React Hooks. 
 
-### Node JS 
-> A
->
+### Node JS -v 16.13.2
+> Node JS is a runtime environment that allows developers to run JavaScript code on the server side, outside of a web browser. Furthermore node allows the use of NPM and the Express framework with our project.
 
-### Mapbox GL JS
-> Client-side JavaScript library for building web maps and web applications with Mapbox's modern mapping technology.
+### Mapbox GL JS -v 2.11.1
+> Mapbox is a client-side JavaScript library for building web maps and web applications with Mapbox's modern mapping technology.
 > This library allows users to view and interact with a dynamic map display of their created trip. 
 
-### Framer Motion 
+### Framer Motion -v 11.2.11
 > A powerful animation and motion library for React. 
 > This library provides the framework for the Front End Parallax effect found on the app homepage. 
 
-### React Router Dom #### -V 6.4.5
+### React Router Dom -v 6.4.5
 > A routing library allowing dynamic site navigation for a React app.
