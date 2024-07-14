@@ -29,5 +29,5 @@
 > A powerful animation and motion library for React. 
 > This library provides the framework for the Front End Parallax effect found on the app homepage. 
 
-### React Router Dom 
+### React Router Dom #### -V 6.4.5
 > A routing library allowing dynamic site navigation for a React app.
