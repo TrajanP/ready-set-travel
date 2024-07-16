@@ -21,6 +21,8 @@
 > Mapbox is a client-side JavaScript library for building web maps and web applications with Mapbox's modern mapping technology.
 > This library allows users to view and interact with a dynamic map display of their created trip. 
 
+### Google Places API
+> Google Places is a service which accepts HTTPS requests for location data. RST uses this service to provide autocomplete capabilities for user location input.
 ### Framer Motion -v 11.2.11
 > A powerful animation and motion library for React. 
 > This library provides the framework for the Front End Parallax effect found on the app homepage. 
