@@ -1,4 +1,4 @@
-# Ready Set Travel - Find it [Here](ready-set-travel-app.com).
+# Ready Set Travel - Find it [Here](https://ready-set-travel-app.com).
 - - - 
 ### Ready Set Travel is a simple and intuitive way to make your next Adventure easier and more enjoyable. Focusing on a visual way to represent your Trip with a Stop by Stop itinerary represented on a dynamic world map.
 ### With the goal to avoid spending even more time with Itinerary planning, the visual experience is simple and light weight. A few clicks, and you are already on your way to planning your trip.  
