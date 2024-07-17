@@ -5,7 +5,7 @@
 ### Our visual planner allows you to spend more time sipping Pena Coladas or finding new adventures rather than being overwhelmed with planning. So start clicking, that beach hammock is closer than you think!
   
 ## Note - Project is in production. Local version is built, but now working on transitioning project to the cloud.
-## Note - Project is not currently designed for mobile display.
+## Note - Currently the website is not built to be responsive with mobile viewing.
 ## The Stack
 - - -
 ### Postgres
