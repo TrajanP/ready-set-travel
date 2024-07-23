@@ -1,0 +1,88 @@
+.modalContainer {
+    border-style: solid;
+    border-color: #212529;
+    border-width: 10px;
+    border-radius: 7px;
+    color: white;
+    background-color: rgba(44,51,63,255);
+    z-index: 100;
+    height: 100%;
+}
+
+.modalHeader {
+    background-color: rgba(44,51,63,255);
+    font-size: xx-large;
+    font-weight: bold;
+    padding: 10px;
+    margin: 0px;
+}
+
+.modalBody {
+    background-color: #758a7f;
+    min-height: 250px;
+    display: flex;
+    background-image: url('../../media/newtriplayer3.svg');
+    width: 100%;
+    height: 70%;
+    background-size: cover;
+}
+
+.modalFooter {
+    background-color: #758a7f;
+}
+
+.inputGroupRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.inputGroupCol {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column; 
+}
+
+.exitIcon {
+    cursor: pointer;
+}
+
+.exitIcon:hover {
+    color: #212529;
+}
+
+.modalFooter button {
+    align-self: flex-end;
+    color: white;
+    padding: 9px 25px;
+    margin-left: 30px;
+    background-color:#292b2c;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    border-style: solid;
+    border-radius: 7px;
+}
+
+.modalFooter button:hover {
+    background-color: #758a7f;
+    border-style: solid;
+    border-radius: 7px;
+}
+
+.background {
+    background-image: url('../../media/newtriplayer3.svg');
+    width: 100%;
+    height: 70%;
+    background-size: cover;
+}
+
+.errMsgOn {
+    color: rgb(156, 78, 78);
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+}
+
+.errMsgOff {
+    display: none;
+}

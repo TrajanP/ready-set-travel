@@ -1,0 +1,39 @@
+.container {
+    padding: 15px;
+    border: solid;
+    border-color: #212529;
+    border-bottom: none;
+    background-color: #758a7f;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container:hover {
+    opacity: 70%;
+}
+
+.iconContainer {
+    scale: 1.5;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.cardIcon {
+    scale: 2;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.cardIcon:hover {
+    color: rgb(44,51,63,255);
+    transition: .2s;
+}
+
+.dayLabelBorder {
+    background-color: rgba(44,51,63,255);
+    border-radius: 10px;
+    width: 80px;
+    text-align: center;
+    padding: 2px;
+    padding-top: 5px;
+}

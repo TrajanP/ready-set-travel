@@ -1,0 +1,50 @@
+/* Used in filter.js, sort.js */
+
+.container {
+    position: relative;
+    font-size: large;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: #9FA6B2;
+}
+.options {
+    position: absolute;
+    background-color: aliceblue ;
+    display: none;
+    z-index: 10;
+    min-width: 150px;
+    border-style: solid;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.options.show {
+    display: block;
+}
+
+.option {
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    width: 150px;
+    margin: 0px;
+    list-style: none;
+    padding-left: 10px;
+}
+
+.option:hover {
+    background-color: #758a7f;
+}
+
+button[id="filterID"] {
+    border-style: none;
+    border-radius: 5px;
+    background-color: #9FA6B2;
+    height: 50px;
+}
+
+button[id="sortID"] {
+    border-style: none;
+    border-radius: 5px;
+    background-color: #9FA6B2;
+    height: 50px;
+}

@@ -1,0 +1,50 @@
+/* Used in NewTrip.js */
+
+.body {
+    height: calc(100vh);
+    overflow-y: hidden;
+    background-color:rgba(44,51,63,255);
+    position: relative;
+}
+
+.moduleBody {
+    display: flex;
+    border-radius: 20px;
+    border-style: solid;
+    /* border-color: #292b2c; */
+    border-color: black;
+    overflow: hidden;
+    margin: 200px;
+    margin-top: 80px;
+    background-color: #758a7f;
+    min-height: 580px;
+    z-index: 1;
+    position: relative;
+}
+
+.bodyLeft {
+    width: 50%;
+    background-color: #758a7f;
+    text-align: center;
+    margin: auto;
+}
+
+.bodyRight {
+    border-left-style: solid;
+    /* background-color: blanchedalmond; */
+    background-color: #212529;
+    color: aliceblue;
+    border-left-color:black;
+    width: 50%;
+}
+
+.spacer {
+    z-index:0;
+    position: absolute;
+    aspect-ratio: 960/300;
+    width: 100%;
+    background-repeat: no-repeat;
+    bottom: 0;
+    background-size: cover;
+    background-image: url('../../media/newtriplayer3.svg');
+}

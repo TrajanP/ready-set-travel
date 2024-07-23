@@ -1,0 +1,108 @@
+.body {
+    background-color: #758a7f;
+    height: calc(100vh - 119px);
+    display: flex;
+    background-image: url('../../media/newtriplayer3.svg');
+    justify-content: center;
+    /* padding-top: 30%; */
+    /* width: 100%;
+    height: 100%; */
+    background-size: cover;
+}
+
+.infoContainer {
+    border-style: solid;
+    border-color: black;
+    border-width: 10px;
+    border-radius: 7px;
+    color: white;
+    background-color: #212529;
+    height: 60%;
+    width: 70%;
+    margin-top: 10%;
+    display: flex;
+}
+
+.leftInfoContainer {
+    width: 70%;
+    height: 100%;
+    background-color: #212529;
+    border-right-style: solid;
+    border-right-color: black;
+    border-right-width: 10px;
+}
+
+.row {
+    display: flex;
+    font-weight: bold;
+    /* font-size: 200%; */
+    padding: 15px;
+    justify-content: space-between;
+    background-color: #758a7f;
+    margin: 10px;
+    border-radius: 7px;
+    
+}
+
+.rowLeft {
+    width: 30%;
+}
+
+.rowMiddle {
+    width: 40%;
+}
+
+.rowRight {
+    width: 30%;
+    text-align: center;
+}
+
+.rightInfoContainer {
+    width: 30%;
+    /* background-color: grey; */
+    text-align: center;
+    position: relative;
+}
+
+.logo {
+    width: 50%;
+    /* padding-top: 40%;
+   z-index: 1;
+   top: 0;
+   left: 0; */
+    z-index: 100;
+    /* scale: 20;
+    margin-top: 200px; */
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    width: 60%;
+}
+.sparksIcon {
+/* z-index: 2;
+top: 0;
+left: 0; */
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.editIcon {
+    cursor: pointer;
+    scale: 1.2;
+}
+
+.editIcon:hover {
+    color: #dd5c66;
+}
+
+.infoName {
+    font-weight: bold;
+    font-size: x-large;
+    width: 90%;
+    margin:auto;
+    padding: 3px;
+    background-color: #758a7f;
+    border-radius: 7px;
+}

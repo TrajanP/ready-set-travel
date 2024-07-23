@@ -1,0 +1,223 @@
+/* Used in EditTrip.js */
+
+.background {
+    height: calc(100vh - 120px);
+    background-color: rgba(44,51,63,255);
+}
+
+.wrapper  {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.leftDash {
+    width: 50%;
+    background-color: #212529;
+}
+
+.leftDashBody {
+    background-color: #212529;
+    border: solid;
+    /* height: 95%; */
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: scroll;
+}
+
+.leftDashBody::-webkit-scrollbar {
+    display: none;
+}
+
+.leftDashBodyContainer {
+    width: 80%;
+    border-radius: 30px;
+    border-color: white;
+    border-style: solid;
+    overflow: scroll;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.leftDashBodyContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.tripHeaderContainer {
+    background-color: #758a7f;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: xxx-large;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.isSavedContainer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    /* margin-right: 10px; */
+    background-color: #212529;
+    border-style: solid;
+    border-radius: 7px;
+    border-color: black;
+    width: 130px;
+    height: 55px;
+    margin: 10px;
+    /* margin-bottom: 40px; */
+}
+
+.tripFooterContainer {
+    background-color: #758a7f;
+    width: 80%;
+    /* text-align: center; */
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+    font-size: xx-large;
+    font-weight: bold;
+    /* position: absolute; */
+    height: 15%;
+    background-color: rgba(44,51,63,255);
+    /* justify-content: center; */
+    /* position: relative; */
+    border-radius: 30px;
+    border-color: white;
+    border-style: solid;
+    margin: auto;
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
+    /* display: flex; */
+    /* margin-top: 0; */
+}
+
+.tripFooterButton {
+    /* margin: 10%; */
+    color: white;
+    padding: 9px 25px;
+    background-color:#292b2c;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    border-style: solid;
+    border-radius: 7px;
+    border-color: black;
+    max-width: 200px;
+    max-height: 80px;
+    margin-top: 45px;
+}
+
+.tripFooterButton:hover {
+    background-color: #758a7f;
+    border-style: solid;
+}
+
+.destListContainer {
+    background-color:aliceblue;
+    border-style: solid;
+    width: 100%;
+    overflow: scroll;
+}
+
+.destListContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.destListPopUp {
+    background-color: rgba(44,51,63,255);
+    position: absolute; 
+    left: 1100px;
+    top: 10%;
+    z-index: 100;
+    width: 40%;
+    height: 500px;
+    border-style: solid;
+    border-radius: 30px;
+}
+
+.rightDash {
+    width: 50%;
+    background-color: #212529;
+}
+
+.rightDashBody {
+    background-color:rgba(44,51,63,255);
+    height: 95%;
+    width: 95%;
+    border-style: solid;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+    border-style: solid;
+    border-color: white;
+}
+
+.mapContainer {
+    height: 100%;
+    padding-bottom: 0px;
+}
+
+.mapButton {
+    z-index: 1;
+    margin: 12px;
+    position: absolute;
+    color: white;
+    padding: 9px 25px;
+    background-color:#292b2c;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    border-style: solid;
+    border-radius: 7px;
+    border-color: black;
+}
+
+.mapButton:hover {
+    background-color: #758a7f;
+    border-style: solid;
+}
+
+.mapBar {
+    background-color: rgb(35 55 75 / 90%);
+    color: #fff;
+    padding: 6px 12px;
+    font-family: monospace;
+    z-index: 1;
+    position: absolute;
+    top: 1;
+    right: 0;
+    margin: 12px;
+    border-radius: 4px;
+}
+
+.noStopsContainer {
+    position: absolute;
+    top: 40%;
+    font-size: xx-large;
+    font-weight: bold;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.noStopsButtonContainer {
+    text-align: center;
+}
+
+.noStopsButtonContainer button {
+    align-self: flex-end;
+    color: white;
+    padding: 9px 25px;
+    margin-left: 30px;
+    background-color:#292b2c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.noStopsButtonContainer button:hover {
+    background-color: #758a7f;
+}
