@@ -1,8 +1,8 @@
 //Component is used to display website wide Nav bar.
 
 //Library Imports
-import React, { useContext, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 //CSS Import
 import css from '../components/componentsCSS/navBarMain.module.css';
 //Component Imports
@@ -10,16 +10,15 @@ import AccountButton from '../components/AccountButton.js';
 //Middleware Imports
 import { UserContext } from '../context/UserContext';
 
-export const MainNavbar = () => {
+export const MainNavbar = (props) => {
 
-  const navigate = useNavigate();
   const {user, setUser} = useContext(UserContext);
 
     return ( 
-      <div className={css.navContainer}>
+      <div  className = {props.transparent ? css.transparent : css.navContainer}>
         <div className={css.navBody}>
         <div className={css.logoContainer}>
-              <img className={css.logo} src={require('../media/logo.png')} />
+              <img alt="Ready Set Travel logo" className={css.logo} src={require('../media/misc/logo.png')} />
         </div>
         <Link to="/" className={css.link}> Home </Link>
         {user.isAuth ? <div style={{paddingTop:"30px"}}> 

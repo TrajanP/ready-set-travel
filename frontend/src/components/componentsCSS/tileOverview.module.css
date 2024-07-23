@@ -16,39 +16,70 @@
     position:relative;
 }
 
-.tileOverviewContainer .title {
-    padding: 40px;
-    font-size: 55px;
-}
-
-.tileOverviewContainer .description {
-    font-size: 25px;
-    text-align: center;
-    padding-left: 30px;
-    padding-right: 30px;
-    color: #a0aaba;
-}
-
-.tileOverviewContainer .footer {
-    align-items: flex-end;
+.tileImgContainer {
     position: absolute;
-    bottom: 0;
-    right: 0;
     left: 0;
-    margin-bottom: 100px;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 40%;
+    border-radius: 20px;
+    border-style: solid;
+    overflow: hidden;
+    z-index: 0;
+    margin-top: 5%;
+}
+
+.titleContainer {
+    font-size: 230%;
+    z-index: 10;
+    position: relative;
     display: flex;
     justify-content: center;
-    
+    align-items: center;
+    min-height: 50%;
+    color: #758a7f;
+}
+
+.descriptionContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #a0aaba;
+    min-height: 25%;
+    width: 100%;
+}
+
+.description {
+    font-size: 25px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    max-width: 60%;
+    max-height: 100px;
+    word-break: break-all;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.description::-webkit-scrollbar {
+    display: none;
+  }
+  
+.footerContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 25%;
 }
 
 .button {
-    align-self: flex-end;
     color: white;
     padding: 10px 20px;
-    margin-left: 30px;
     background-color:#758a7f;
-    border: none;
-    border-radius: 5px;
+    border: solid;
+    border-radius: 7px;
+    border-color: black;
     cursor: pointer;
     font-size: 30px;
     transition: all 0.3s ease 0s;
@@ -56,4 +87,19 @@
 
 .button:hover {
     background-color:#9FA6B2;
+}
+
+.titleImgContainer {
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    border-style: solid;
+    height: 80%;
+    width: 75%;
+    border-radius: 20px;
+    border-style: solid;
+    color: black;
+    position:relative;
+    margin: auto;
+    overflow: hidden;
 }

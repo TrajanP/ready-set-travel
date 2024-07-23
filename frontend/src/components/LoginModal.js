@@ -7,8 +7,6 @@ import Modal from 'react-bootstrap/Modal';
 import css from '../components/componentsCSS/modalBig.module.css';
 //React-Icons Import
 import { ImCross } from 'react-icons/im';
-//React-Router Imports
-import { useParams } from 'react-router-dom';
 //Middleware Imports
 import { UserContext } from '../context/UserContext';
 //API Imports

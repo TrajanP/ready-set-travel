@@ -9,13 +9,13 @@ import NewTrip2 from '../components/NewTrip2.js';
 //CSS Import
 import css from './pagesCSS/newTrip.module.css';
 //Media Imports
-import Balloons from '../media/HotAirBalloons.gif';
+import Balloons from '../media/misc/HotAirBalloons.gif';
 
 
 export const NewTrip = () => {
 
     const [module, setModule] = useState(0);
-    const [newTrip, setNewTrip] = useState({name:"Trajan", origin: "", return: "", description: "", type: "", start: "", end: "", purpose: ""});
+    const [newTrip, setNewTrip] = useState({name:"Mytrip", origin: "", return: "", description: "", type: "", start: "", end: "", purpose: ""});
     let shownModule;
 
     //Controls which Form tile is shown
@@ -36,10 +36,9 @@ export const NewTrip = () => {
     return (
         <div className={css.body}>
             <NavBar/>
-            <div className={css.spacer}> </div>
             <div className={css.moduleBody}>
                 <div className={css.bodyLeft}>
-                    <img src = {Balloons} style={{width: "80%", height: "80%"}}/>
+                    <img alt="Hot Air balloons" src = {Balloons}/>
                 </div>
                 <div className={css.bodyRight}>
                     {shownModule}

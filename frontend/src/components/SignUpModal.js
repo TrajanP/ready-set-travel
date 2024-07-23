@@ -10,9 +10,7 @@ import Modal from 'react-bootstrap/Modal';
 import css from '../components/componentsCSS/modalBig.module.css';
 //React-Icons Import
 import { ImCross } from "react-icons/im";
-import { FaCheck } from "react-icons/fa";
 //React-Router Imports
-import { useParams } from 'react-router-dom';
 import AuthorizationFinder from '../apis/AuthorizationFinder';
 
 export const SignUpModal = (props) => {
@@ -84,7 +82,7 @@ export const SignUpModal = (props) => {
 
     //User's Email
     const [email, setEmail] = useState('');
-    const [validEmail, setValidEmail] = useState(false);
+    // const [validEmail, setValidEmail] = useState(false);
     const [emailFocus, setEmailFocus] = useState(false);
 
     //User's First Name
@@ -155,7 +153,7 @@ export const SignUpModal = (props) => {
                         <div className={css.inputGroupRow}>   
                             <div className={css.inputGroupCol}>   
                                 <label htmlFor="userNameID"> Email: </label> 
-                                <input required ref={emailRef} id="userNameID" type="email" name="UserName" title="Enter your email." placeholder="JohnDoe@gmail.com" onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} onChange={(e) => setEmail(e.target.value)}/>
+                                <input required ref={emailRef} id="userNameID" type="email" name="UserName" title="Enter your email." placeholder="JohnDoe@gmail.com" autoComplete="off" onFocus={() => setEmailFocus(true)} onBlur={() => setEmailFocus(false)} onChange={(e) => setEmail(e.target.value)}/>
                             </div>   
                         </div>   
                         <div className={css.inputGroupRow}>   

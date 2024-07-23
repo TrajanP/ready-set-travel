@@ -1,7 +1,8 @@
 //This component displays a indepth itinerary for a specific day at a "Location".
 //It shows hourly details for activities during the day. 
+//Not currently implemented
 //React Imports
-import React, { forwardRef, useRef }from 'react';
+import React, { forwardRef }from 'react';
 import css from './componentsCSS/dayItineraryPopUp.module.css';
 
 export const DayItineraryPopUp = forwardRef((props, ref) => {

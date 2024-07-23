@@ -26,15 +26,15 @@ export const NewTrip1 = ({ module, passNewTrip }) => {
                 <form>
                     <div className={css.largeInput}>   
                         <label> Trip Name </label>
-                        <input id="nameID" type="text" name="name" placeholder="French Riviera"/>
+                        <input id="nameID" type="text" name="name" maxLength="30" placeholder="French Riviera"/>
                     </div>  
 
                     <div className={css.largeInput}>
                         <label> Trip Description </label>
-                        <textarea id="descriptionID" name="description" rows="3" cols="50" placeholder="The trip of a lifetime!" />
+                        <textarea id="descriptionID" name="description" rows="3" cols="50" maxLength="200" placeholder="The trip of a lifetime!" />
                     </div>
                     <div className={css.largeInput}>
-                        <button className={css.buttonNext} onClick={() => {handleChange(); module(1)}}> Next </button>
+                        <button type="button" className={css.buttonNext} onClick={() => {handleChange(); module(1)}}> Next </button>
                     </div>
                 </form>
             </div>

@@ -1,48 +1,29 @@
 
 .background {
-    height: calc(100vh - 75px);
+    height: calc(100vh - 115px);
     overflow-y: hidden;
-    /* display: flex; */
-    /* background-color: rgb(187, 187, 187); */
     background-color: rgba(44,51,63,255);
+    margin-top: 115px;;
 }
 
 .wrapper  {
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
     height: 100%;
 }
 
 .leftDash {
     width: 50%;
-    /* height: 100vh; */
     background-color: #212529;
     overflow-y: scroll;
 }
 
 .leftDashBody {
-    /* background-color: #292b2c; */
     background-color: #212529;
     border: solid;
     height: 90%;
-    /* max-height: 1000px; */
     overflow-y: scroll;
-    /* height: 550px; */
-    /* border-radius: 20px     20px      0           0; */
-    /* margin-left: 15px;
-    margin-right: 15px;
-    margin-top: 15px; */
-    /* scroll-snap-type: y mandatory; */
-    /* overflow-y: scroll; */
 }
-
-/* .leftDashHeader {
-    background-color: rgb(221, 227, 236);
-    padding: 30px;
-    display: flex;
-    justify-content: space-evenly;
-} */
 
 .leftDashBody::-webkit-scrollbar {
     display: none;
@@ -76,17 +57,6 @@
     z-index: -2;
     margin: 0px;
     background-color: #9FA6B2;
-    /* height: 50px; */
-}
-
-
-/* .searchBar:focus-within {
-    border-color: #758a7f;
-    -webkit-transition: 0.5s;
-} */
-
-.filterFeat {
-
 }
 
 .image {
@@ -95,12 +65,6 @@
 
 .rightDash {
     width: 50%;
-    /* height: 100vh; */
-    /* background-color:aliceblue;
-    display: inline-block;
-    min-width: 60%; */
-    /* height: 100%; */
-    /* animation: change 10s infinite; */
     background-color: #212529;
 }
 
@@ -111,62 +75,14 @@
     padding-top: 80px;
     border-style: solid;
     border-radius: 30px;
-    /* background-image: none; 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: 5s; */
-
-
-    /* -webkit-animation-name: animate; */
-    /* -webkit-animation-direction: alternate-reverse; */
-    /* -webkit-animation-duration: 30s; */
-    /* -webkit-animation-fill-mode: forwards; */
-    /* -webkit-animation-iteration-count: infinite;
-    -webkit-animation-play-state: running; */
-    /* -webkit-animation-timing-function: ease-in-out; */
-
 }
-
-
-/* @keyframes animate {
-    0%
-    {
-        background-image: url("/Users/trajan/Studios1/Travel/travel-project/src/media/London.png");
-    }
-    20%
-    {
-        background-image: url("/Users/trajan/Studios1/Travel/travel-project/src/media/Berlin.png");
-    }
-    40%
-    {
-        background-image: url("/Users/trajan/Studios1/Travel/travel-project/src/media/Amsterdam.png");
-    }
-    60%
-    {
-        background-image: url("/Users/trajan/Studios1/Travel/travel-project/src/media/NYC.png");
-    }
-    80%
-    {
-        background-image: url("/Users/trajan/Studios1/Travel/travel-project/src/media/Vancouver.png");
-    }
-   100%
-    {
-        background-image: url("/Users/trajan/Studios1/Travel/travel-project/src/media/Copenhagen.png");
-    } 
-}; */
 
 
 input[id="searchID"]
 {
-    /* height: 47px; */
     border-radius: 5px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    /* padding: 10px;
-    margin: 10px; */
-    /* margin: 0px;
-    box-sizing: border-box; */
     border: 5px solid #292b2c;
     -webkit-transition: 0.5s;
     transition: 0.5s;

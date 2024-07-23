@@ -16,9 +16,9 @@ export const Filter = ({filterLabel, options}) => {
         <div className={css.container} >
             <button id="filterID" onClick={() => setShowFilter(!showFilter)} > {filterLabel} {showFilter ? <FaChevronCircleUp/> : <FaChevronCircleDown/>} </button>
             <li className={`${css.options} ${showFilter ? css.show: ""}`}>
-                {options.map(option => (
-                    <label for={option.label}>
-                        <ul onMouseDown={(event) => {event.preventDefault(); console.log("Prevent")}} key={option.label} className={css.option}>
+                {options.map((option, index) => (
+                    <label htmlFor={option.label} key={index}>
+                        <ul onMouseDown={(event) => {event.preventDefault(); console.log("Prevent")}} className={css.option}>
                             <input type="checkbox" id={option.label}></input> {option.label} 
                         </ul>
                     </label>

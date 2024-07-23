@@ -7,7 +7,6 @@ import css from './componentsCSS/modalStop.module.css';
 import { ImCross } from "react-icons/im";
 //React-Bootstrap Imports 
 import Modal from 'react-bootstrap/Modal';
-import StopFinder from '../apis/StopFinder';
 //API Import
 import DayFinder from '../apis/DayFinder.js';
 //Middleware

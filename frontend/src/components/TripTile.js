@@ -1,6 +1,6 @@
 //The TripTile component is used on the dashboard to represent an individual trip
 //React Imports
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 //React Icons Imports
 import {FaPlaneDeparture} from 'react-icons/fa';
 import {BsFillSunriseFill, BsFillSunsetFill} from 'react-icons/bs';

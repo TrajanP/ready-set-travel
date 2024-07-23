@@ -10,7 +10,6 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { MdAccountCircle, MdNoAccounts, MdOutlineAssignmentInd } from "react-icons/md";
 import { LuClipboardSignature } from "react-icons/lu";
 import { IoIosArrowDown } from "react-icons/io";
-import { FaDoorOpen } from "react-icons/fa";
 import { ImExit } from "react-icons/im";
 //Component Imports
 import LoginModal from '../components/LoginModal.js';
@@ -35,6 +34,7 @@ export const AccountButton = () => {
 
     const logoutUser = async () => {
         const user = await logoutFinder.get(`/`, {});
+        console.log(`User ${user} is logged out.`);
     };
 
     return (

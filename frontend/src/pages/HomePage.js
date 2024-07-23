@@ -1,36 +1,31 @@
-//The Homepage will be the base of the application, it is not built out yet.
-
-import React, { useContext } from 'react';
+//The Homepage will be the base of the application
+//React Library Imports
+import React, { useRef } from 'react';
+//Component Imports
+import ParallaxHome from '../components/ParallaxHome';
 import NavbarMain from '../components/NavbarMain';
-import Button from 'react-bootstrap/Button';
-import { UserContext } from '../context/UserContext';
+import InfoList from '../components/InfoList'
+//Styling Imports
 import css from './pagesCSS/homepage.module.css';
+
+import { motion, useScroll } from 'framer-motion';
 
 export const HomePage = () => {
 
-    const { user, setUser } = useContext(UserContext);
+    const ref = useRef();
+    const { scrollYProgress } = useScroll();
 
     return (
-        <div>
-            <NavbarMain/>
-            <div className={css.body}>
-            <div className={css.background}></div>
-                <div> User Logged in: {user.username} </div>
-                <div>
-                    <div className={css.title}>
-                        Ready Set Travel
-                        <div className={css.description}>
-                            <p>
-                                Are your bags packed? Welcome to Ready Set Travel. An Innovative and Visually focused tool to help you plan your next Amazing travel plans. 
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>         
+        <div ref={ref}>
+            <motion.div className={css.scrollBar} style={{scaleX: scrollYProgress}}></motion.div>
+            <NavbarMain transparent={true} />
+            <div className={css.homePageContainerBuffer}>
+                <ParallaxHome/>
+                <InfoList/>
+                <h2 className={css.nextScrollHome} onClick={() => document.getElementById('page1ID').scrollIntoView()}> Learn More </h2>
+            </div>
         </div>
     );
-
-
 }
 
 export default HomePage;

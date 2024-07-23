@@ -1,6 +1,6 @@
 //This component renders the modal to Add a "Stop" in a user's itinerary locally. User is asked to fill in basic "Stop" info.
 //React Imports
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 //React-Bootstrap Imports
 import Modal from 'react-bootstrap/Modal';
 //Component Imports

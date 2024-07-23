@@ -8,8 +8,8 @@ import TileOverview from '../components/TileOverview';
 import Filter from '../components/Filter';
 import Sort from '../components/Sort';
 //Library Imports
-import React, { useRef, useEffect, useState, useContext } from 'react';
-import { FaSearch, FaChevronCircleDown} from 'react-icons/fa';
+import React, { useEffect, useState, useContext } from 'react';
+import { FaSearch } from 'react-icons/fa';
 //CSS Imports
 import css from './pagesCSS/dashboard.module.css';
 //API Imports
@@ -62,7 +62,8 @@ export const DashboardPage = () => {
     const [currObject, setCurrObject] = useState({});
     const [show, setShow] = useState(false);
     const [listTrips, setListTrips] = useState([]);
-    const { user, setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
+    const [searchValue, setSearchValue] = useState("");
     
     const handleClose = () => {
         setShow(!show);
@@ -90,7 +91,7 @@ export const DashboardPage = () => {
                     Authorization: `Bearer ${user.accessToken}`
                 }
             });
-            setListTrips(listTrips.filter(trip => {
+            setListTrips(listTrips.filter((trip, index) => {
                 return trip.trip_id !== tripID;
             }));
             setShowInfo(false);
@@ -120,20 +121,26 @@ export const DashboardPage = () => {
                                 <div className={css.searchBar}>
                                     <FaSearch size="25px" style={{marginRight: "5px", marginLeft:"5px", marginTop: "15px", marginBottom: "0px"}}/>
                                     <form> 
-                                        <input placeholder="Search Trips" type="search" id="searchID" />
+                                        <input placeholder="Search Trips" type="search" id="searchID" onChange={(e) => setSearchValue(e.target.value)}/>
                                     </form>
                                 </div>
                             </div>
                             <div>
-                                {listTrips.map((tile) => ( 
+                                {listTrips.filter(trip => {
+                                    if(searchValue.length === 0) { 
+                                        return trip;
+                                    } else if (trip.trip_name.toLowerCase().includes(searchValue.toLowerCase())) {
+                                        return trip;
+                                    }
+                                }).map((tile) => ( 
                                         <TripTile key={tile.trip_id} tile={tile} className={css.image} passShowInfo={setShowInfo} passTileID={setTileID} passTile={setCurrObject}/>
-                                    ))}
+                                    )
+                                )}
                             </div>        
                         </div>
                     </div>
                     <div className={css.rightDash}>
                         <div className={css.rightDashBody}>
-                            
                             {showInfo ? <TileOverview passDeleteHandler={deleteTrip} value={currObject}/> : <DefaultTile/>}
                         </div>
                     </div>

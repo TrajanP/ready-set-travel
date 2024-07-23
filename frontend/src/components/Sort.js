@@ -37,7 +37,7 @@ export const Sort = ({ sortLabel, options, passSortByData, passedData }) => {
         // console.log(`Orginal Data: ${passedData[0].trip_start_date}`);
         // console.log(`UnSortedData ${passedData[0].trip_id} ${passedData[1].trip_id}`);
         var sorted = [];
-        if(passedData.length!=0)
+        if(passedData.length!==0)
         {
             if(sortBy === "Soonest")
             {
@@ -61,10 +61,10 @@ export const Sort = ({ sortLabel, options, passSortByData, passedData }) => {
         <div className={css.container}>
                     <button id="sortID" onClick={() => setShowSort(!showSort)} > {sortLabel} {showSort ? <FaChevronCircleUp/> : <FaChevronCircleDown/>} </button>
                     <li className={`${css.options} ${showSort ? css.show: ""}`}>
-                        {options.map(option => (
-                            <label for={option.label}>
+                        {options.map((option, index) => (
+                            <label htmlFor={option.label} key={index}>
                                 {/* <ul onMouseDown={(event) => {event.preventDefault(); }} key={option.label} className={css.option}> */}
-                                <ul key={option.label} className={css.option}>
+                                <ul className={css.option}>
                                     <input type="checkbox" id={option.label} onChange={() => sortHandler(option.label)}></input> {option.label} 
                                 </ul>
                             </label>

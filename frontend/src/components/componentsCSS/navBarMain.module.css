@@ -7,7 +7,24 @@
     justify-content: space-between;
     padding-top: 9px;
     padding-bottom: 10px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 
+}
+
+.transparent {
+    background-color: transparent;
+    display: flex;
+    width: 100%;
+    color: white;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-top: 9px;
+    padding-bottom: 10px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 }
 
 .navHeader {
@@ -45,11 +62,9 @@
 
 .logoContainer {
     margin-right: 50px;
-    /* padding-bottom: 50px; */
 }
 
 .logo {
     width: 100px;
     height: 100px;
-    /* position: absolute; */
 }

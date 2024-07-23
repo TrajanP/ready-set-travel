@@ -6,8 +6,6 @@ import css from './componentsCSS/dayItinerary.module.css';
 //Component Imports
 import DayCard from './DayCard.js';
 import AddDayModal from './AddDayModal.js';
-//React Icons Imports
-import { MdDisplaySettings } from 'react-icons/md';
 //API Imports
 import DayFinder from '../apis/DayFinder.js';
 //Middleware Imports

@@ -1,9 +1,10 @@
+//The Account Page allows a user to view their accounts and make changes.
 //React Imports
 import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../context/UserContext';
 //CSS Import
 import css from './pagesCSS/accountPage.module.css';
-import AccountIcon from '../media/AccountIcon.png';
+import AccountIcon from '../media/misc/AccountIcon.png';
 //Component Imports
 import NavBarMain from '../components/NavbarMain';
 import UpdateUserModal from '../components/UpdateUserModal';
@@ -51,7 +52,7 @@ export const AccountPage = () => {
                         <div className={css.leftInfoContainer}>
                             <h3>
                                 <div style={{textAlign:"center", fontWeight:"bold", padding:"5px"}}> My Account </div> 
-                                <span className={css.row}> <span className={css.rowLeft}> User Name: </span> <span className={css.rowMiddle}> {user.username} </span> <span className={css.rowRight}> <FaEdit className={css.editIcon} onClick={() => setShowUserModal(true)}/> </span></span>
+                                <span className={css.row}> <span className={css.rowLeft}> User Name: </span> <span className={css.rowMiddle} className={css.spanOverflow}> {user.username} </span> <span className={css.rowRight}> <FaEdit className={css.editIcon} onClick={() => setShowUserModal(true)}/> </span></span>
                                 <span className={css.row}> <span className={css.rowLeft}> Password: </span> <span className={css.rowMiddle}> ***** </span> <span className={css.rowRight}> <FaEdit className={css.editIcon} onClick={() => setShowPassModal(true)}/> </span></span>
                                 <span className={css.row}> <span className={css.rowLeft}> First Name: </span> <span className={css.rowMiddle}> {user.firstName} </span> <span className={css.rowRight}> <FaEdit className={css.editIcon} onClick={() => setShowFirstModal(true)}/> </span></span>
                                 <span className={css.row}> <span className={css.rowLeft}> Last Name: </span> <span className={css.rowMiddle}> Parkes </span> <span className={css.rowRight}> <FaEdit className={css.editIcon} onClick={() => setShowLastModal(true)}/> </span></span>
@@ -60,7 +61,7 @@ export const AccountPage = () => {
                         <div className={css.rightInfoContainer}>
                             <div>
                                 <lottie-player src="https://lottie.host/1ee436cc-9a82-415b-bb6f-9cf74422d74f/a0yb0swvZ8.json"  className={css.sparksIcon} background="#212529" speed="1" loop  autoplay direction="1" mode="normal"></lottie-player>
-                                < img src={AccountIcon} className={css.logo}></img>
+                                < img alt="Account Icon" src={AccountIcon} className={css.logo}></img>
                                 <div className={css.infoName}> Member since {dateSince} </div>
                             </div>
                         </div>

@@ -2,9 +2,7 @@
 //A user removes a stop, but this is only saved locally
 //A user must save the changes in the Parent Component to make changes in DB
 //React Imports
-import React, { useState, useContext } from 'react';
-//React Router Imports
-import { useParams } from 'react-router-dom';
+import React from 'react';
 //CSS Import
 import css from './componentsCSS/modalStop.module.css';
 //React-Icons Import

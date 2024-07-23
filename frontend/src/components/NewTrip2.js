@@ -2,8 +2,8 @@
 //As this is the last page, it also sends the form data to the database with a Post. 
 
 //Library Imports
-import {React, useContext, useState} from 'react';
-import { useSubmit, useNavigate} from 'react-router-dom';
+import {React, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 //Middleware Imports
 import { UserContext } from '../context/UserContext';
 //API Imports
@@ -15,7 +15,7 @@ export const NewTrip2 = ({ trip }) => {
     
     const navigate = useNavigate();
     const { user, setUser } = useContext(UserContext);
-    const [listTrips, setListTrips] = useState([]);
+    // const [listTrips, setListTrips] = useState([]);
 
     //Enter User's new Trip in database
     const postTrip = async () => {
@@ -50,7 +50,7 @@ export const NewTrip2 = ({ trip }) => {
                     Authorization: `Bearer ${user.accessToken}`
                 }
             });
-            setListTrips(response.data);
+            // setListTrips(response.data);
         } catch (err) {
             console.error(err.message);
         }
@@ -101,8 +101,8 @@ export const NewTrip2 = ({ trip }) => {
                             </select>
                         </div>
                         <div className={css.rowButton}>
-                            <button className={css.buttonBack} onClick={() => module(0)}> Back </button>
-                            <button className={css.buttonNext} onClick={() => submit()}> Done </button>
+                            <button type="button" className={css.buttonBack} onClick={() => module(0)}> Back </button>
+                            <button type="button" className={css.buttonNext} onClick={() => submit()}> Done </button>
                         </div>
                     </form>
                 </div>

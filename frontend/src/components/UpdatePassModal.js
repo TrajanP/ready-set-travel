@@ -17,7 +17,7 @@ export const UpdatePassModal = (props) => {
     const [pass, setPass] = useState("");
     const [confirm, setConfirm] = useState("");
     const [passValid, setPassValid] = useState(false);
-    const [confirmValid, setConfirmValid] = useState(false);
+    // const [confirmValid, setConfirmValid] = useState(false);
     const [match, setMatch] = useState(true);
     const [errMsg, setErrMsg] = useState("");
     const passRef = useRef();

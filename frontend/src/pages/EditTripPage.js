@@ -6,7 +6,7 @@
 //get updated with this data once a user has "Saved" the changes.
 //Each "Stop" has a list of "Days", where each day can be filled with activities through an hour by hour itinerary. - (Days implementation has been put on hold)
 //React Imports
-import React, { useRef, useEffect, useState, useMemo, useContext } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import css from './pagesCSS/editTrip.module.css';
 import { useParams } from 'react-router';
 //Component Imports
@@ -14,9 +14,6 @@ import NavbarMain from '../components/NavbarMain.js';
 import StopCard from '../components/StopCard.js';
 import AddStopModal from '../components/AddStopModal';
 import DayItineraryPopUp from '../components/DayItineraryPopUp.js';
-//DND-Kit Sortable library - (Not Currently in use)
-// import {DndContext, closestCenter,} from "@dnd-kit/core";
-// import {arrayMove, SortableContext, verticalListSortingStrategy} from '@dnd-kit/sortable';
 //Map Box library 
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 //API Imports
@@ -54,23 +51,6 @@ export const EditTripPage = () => {
     const [myTrip, setMyTrip] = useState("Test"); //Stores retrieved Trip data
     const { user, setUser } = useContext(UserContext); //User info
     const [isSaved, setIsSaved] = useState(true); //Bool to display if a user's local changes have been saved
-
-    //Click and Drag Implementation State - (Not Currently implemented)
-    // const [destinations, setDestinations] = useState([]); 
-    // const destinationIds = useMemo(() => destinations.map((item) => item.trip_name), [destinations]);
-
-    //Code to warn user from leaving page with unsaved work
-    // useEffect(() => {
-    //     window.addEventListener('beforeunload', alertUser)
-    //     return () => {
-    //       window.removeEventListener('beforeunload', alertUser)
-    //     }
-    //   }, []);
-      
-    //   const alertUser = e => {
-    //     e.preventDefault()
-    //     e.returnValue = ''
-    //   }
     
     //----------------------------Stop Handler Functions------------------------//
 
@@ -150,7 +130,7 @@ export const EditTripPage = () => {
 
     //User has submitted call to save Trip: Update Database with local changes to the Trip
     const SaveTrip = () => {
-        deletedStops.map((stop) => { //Check do we have any locally deleted stops to apply to the DB?
+        deletedStops.map((stop, index) => { //Check do we have any locally deleted stops to apply to the DB?
             DeleteStop(stop.stop_id);
         });
         listStops.map((stop, index) => { //Iterate thru all local stops, either Update or Add the stop to DB
@@ -218,7 +198,6 @@ export const EditTripPage = () => {
             map.current = new mapboxgl.Map({
                 container: mapContainer.current,
                 style: 'mapbox://actstyles/mapbox/streets-v12',
-                // style: 'mapbox://styles/mapbox/dark-v11how to create g',
                 center: [listStops[0].stop_long, listStops[0].stop_lat],
                 zoom: zoom
             });
@@ -354,13 +333,11 @@ export const EditTripPage = () => {
                 <div className={css.wrapper}>
                     <div className={css.leftDash}>
                         <div className={css.leftDashBody}>
-                            {/* <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}> */}
                             <div className={css.leftDashBodyContainer}>
                                 <div className={css.tripHeaderContainer}>
                                     {myTrip.trip_name} <div className={css.isSavedContainer}> <div style={{display:"flex", justifyContent:"center"}}> {isSaved ? <FaCheck style={{scale:".7", color:"#177843"}}/> : <ImCross style={{scale:".6", color:"#B25E4C"}}/>} <BiSave/> </div> </div>
                                 </div>
                                 <div className={css.destListContainer}>
-                                    {/* <SortableContext items={destinationIds} strategy={verticalListSortingStrategy}> */}
                                     {listStops.length === 0 ? 
                                     <div className={css.noStopsContainer}> 
                                         <div> Every trip needs a start! Lets add a Stop to begin. </div>
@@ -368,12 +345,10 @@ export const EditTripPage = () => {
                                         {modalAddShow ? <AddStopModal passSetAddModalShow={setAddModalShow}  stopsHandler={stopsHandler} stopsCount={0} /> : ""}
                                     </div> : ""}
                                         {listStops.map((location, index) => (
-                                            <StopCard key={location.stop_id} id={location.stop_name} dest={location} stopsHandler={stopsHandler} stopsCount={listStops.length} stopIndex={index} setNewStop={setNewStop} map={map} markersList={markersList} setMarkersList={setMarkersList}/>
+                                            <StopCard key={index} id={location.stop_name} dest={location} stopsHandler={stopsHandler} stopsCount={listStops.length} stopIndex={index} setNewStop={setNewStop} map={map} markersList={markersList} setMarkersList={setMarkersList}/>
                                         ))}
-                                    {/* </SortableContext> */}
                                 </div>
                             </div>
-                            {/* </DndContext> */}
                             {/* {showModal ? <DayItineraryPopUp/> : ""} */}
                         </div>
                         <div className={css.tripFooterContainer}>
