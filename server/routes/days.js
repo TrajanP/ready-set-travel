@@ -38,4 +38,9 @@ router.delete("/delete/:id", async(req,res) => {
     }
 })
 
+router.route("/delete/:id")
+    .delete((req,res) => {
+        res.json({ "id": req.body.id })
+    })
+
 module.exports = router;

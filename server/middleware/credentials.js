@@ -1,4 +1,5 @@
-const allowedOrigins = require('../../src/apis/config/allowedOrigins');
+// const allowedOrigins = require('../../src/apis/config/allowedOrigins');
+const allowedOrigins = require('../config/allowedOrigins');
 //If origin of sent request is allowed, set this header configuration
 const credentials = (req, res, next) => {
     const origin = req.headers.origin;
