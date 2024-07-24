@@ -6,7 +6,7 @@
   
 ## Note - Project is in production. Local version is built, but now working on transitioning project to the cloud.
 ## Note - Currently the website is not built to be responsive with mobile viewing.
-## The Stack
+# The Stack
 - - -
 ### Postgres
 > PostgreSQL is an object-relational database management system used to store user data.
@@ -32,3 +32,23 @@
 
 ### React Router Dom -v 6.4.5
 > A routing library allowing dynamic site navigation for a React app.
+
+# Starting the Project Locally
+- - -
+### Ensure you have Node (Java Runtime Environment) installed in your developer environment.   
+> Find it [Here](https://nodejs.org/en/download/package-manager).
+### To Pull the Repo to Local
+> `git clone https://github.com/TrajanP/ready-set-travel.git`
+### To Install Dependencies
+- In server Directory, Run
+> `npm install`
+- In frontend Directory, Run
+> `npm install`
+### Ready to Launch
+- The backend runs on port 5000
+- In server Directory, Run
+> `nodemon index`
+- The frontend runs on port 3000
+- In frontend directory, Run
+> `npm start`
+- Both the frontend and backend should be running and communicating now.
